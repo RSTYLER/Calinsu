@@ -1,0 +1,39 @@
+<resources>
+    <string name="app_name">Canlisu</string>
+    <string name="navigation_drawer_open" translatable="false">Open navigation drawer</string>
+    <string name="navigation_drawer_close" translatable="false">Close navigation drawer</string>
+    <string name="nav_header_title" translatable="false">Ivan Ivanov</string>
+    <string name="nav_header_subtitle" translatable="false">name.example@android.com</string>
+    <string name="nav_header_desc" translatable="false">Navigation header</string>
+    <string name="action_settings" translatable="false">Settings</string>
+
+    <string name="menu_profile" translatable="false">Profile</string>
+    <string name="user_info_title" translatable="false">User Information</string>
+    <string name="first_name_template" translatable="false">First Name: %1$s</string>
+    <string name="last_name_template" translatable="false">Last Name: %1$s</string>
+    <string name="email_template" translatable="false">Email: %1$s</string>
+    <string name="address_template" translatable="false">Address: %1$s</string>
+    <string name="payment_methods_title" translatable="false">Payment Methods</string>
+    <string name="payment_card_template" translatable="false">Card: %1$s</string>
+    <string name="payment_paypal_template" translatable="false">PayPal: %1$s</string>
+
+
+    <string name="subscription_status" translatable="false">Status: %1$s</string>
+    <string name="subscription_name" translatable="false">Subscription: %1$s</string>
+    <string name="monthly_payment" translatable="false">Monthly Payment: %1$s</string>
+    <string name="last_billing_date" translatable="false">Last Billed: %1$s</string>
+
+    <string name="requests_title" translatable="false">Requests</string>
+    <string name="create_new_request" translatable="false">Create New Request</string>
+
+    <string name="describe_issue" translatable="false">Describe your issue</string>
+    <string name="hint_issue_description" translatable="false">Describe the problem...</string>
+    <string name="hint_contact_number" translatable="false">Contact phone number</string>
+    <string name="submit_request" translatable="false">Submit Request</string>
+
+
+
+
+    <string name="menu_subscription" translatable="false">Subscription</string>
+    <string name="menu_help" translatable="false">Help</string>
+</resources>
