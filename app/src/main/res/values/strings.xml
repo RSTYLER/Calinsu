@@ -6,6 +6,8 @@
     <string name="nav_header_subtitle" translatable="false">name.example@android.com</string>
     <string name="nav_header_desc" translatable="false">Navigation header</string>
     <string name="action_settings" translatable="false">Settings</string>
+    <string name="logout" translatable="false">Logout</string>
+    <string name="full_name" translatable="false">%1$s</string>
 
     <string name="menu_profile" translatable="false">Profile</string>
     <string name="user_info_title" translatable="false">User Information</string>
@@ -16,6 +18,10 @@
     <string name="payment_methods_title" translatable="false">Payment Methods</string>
     <string name="payment_card_template" translatable="false">Card: %1$s</string>
     <string name="payment_paypal_template" translatable="false">PayPal: %1$s</string>
+    <string name="add_payment_method" translatable="false">Add New Payment Method</string>
+    <string name="card_number_template" translatable="false">**** **** **** %1$s</string>
+
+
 
 
     <string name="subscription_status" translatable="false">Status: %1$s</string>

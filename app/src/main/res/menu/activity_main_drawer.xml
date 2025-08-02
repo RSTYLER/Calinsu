@@ -4,17 +4,33 @@
     tools:showIn="navigation_view">
 
     <group android:checkableBehavior="single">
+        <!-- Верхние основные пункты -->
         <item
             android:id="@+id/nav_home"
             android:icon="@drawable/ic_menu_profile_icon"
-            android:title="@string/menu_profile" />
+            android:title="@string/menu_profile"
+            android:titleTextAppearance="@style/DrawerItemText" />
+
         <item
             android:id="@+id/nav_gallery"
             android:icon="@drawable/ic_menu_subscreiption_icon"
-            android:title="@string/menu_subscription" />
+            android:title="@string/menu_subscription"
+            android:titleTextAppearance="@style/DrawerItemText" />
+
         <item
             android:id="@+id/nav_slideshow"
             android:icon="@drawable/ic_menu_help_icon"
-            android:title="@string/menu_help" />
+            android:title="@string/menu_help"
+            android:titleTextAppearance="@style/DrawerItemText" />
     </group>
+
+    <!-- Нижний разделитель -->
+    <item android:title="">
+        <menu>
+            <item
+                android:id="@+id/nav_logout"
+                android:icon="@drawable/ic_menu_logout"
+                android:title="@string/logout" />
+        </menu>
+    </item>
 </menu>

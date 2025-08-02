@@ -1,5 +1,6 @@
 package ru.example.canlisu.ui.home
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -17,12 +18,16 @@ class HomeFragment : Fragment() {
     // Примерные данные — потом можно подгружать из ViewModel или базы
     private val firstName = "Ivan"
     private val lastName = "Ivanov"
+
     private val email = "Ivan@example.com"
     private val address = "123 Example Street, NY"
-    private val paymentCard = "Visa **** 1234"
-    private val paymentPaypal = "PayPal: Ivan@paypal.com"
 
+    val last4Digits = "1234" // заменить на реальные данные
+
+
+    @SuppressLint("SetTextI18n")
     override fun onCreateView(
+
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -36,8 +41,9 @@ class HomeFragment : Fragment() {
             lastNameView.text = getString(R.string.last_name_template, lastName)
             emailView.text = getString(R.string.email_template, email)
             addressView.text = getString(R.string.address_template, address)
-            paymentCardView.text = getString(R.string.payment_card_template, paymentCard)
-            paymentPaypalView.text = getString(R.string.payment_paypal_template, paymentPaypal)
+            cardNumberMasked.text = getString(R.string.card_number_template, last4Digits)
+
+
         }
 
         return binding.root

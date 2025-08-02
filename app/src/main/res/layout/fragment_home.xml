@@ -21,7 +21,7 @@
             android:orientation="vertical"
             android:padding="16dp">
 
-            <!-- Section Title -->
+            <!-- User Info Section -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -30,7 +30,6 @@
                 android:textSize="18sp"
                 android:paddingBottom="8dp" />
 
-            <!-- User Info -->
             <TextView
                 android:id="@+id/firstNameView"
                 android:layout_width="wrap_content"
@@ -71,17 +70,45 @@
                 android:textSize="18sp"
                 android:paddingBottom="8dp" />
 
-            <TextView
-                android:id="@+id/paymentCardView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/payment_card_template" />
+            <!-- Stylized Card -->
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/bg_visa_card"
+                android:elevation="4dp"
+                android:padding="16dp">
 
-            <TextView
-                android:id="@+id/paymentPaypalView"
-                android:layout_width="wrap_content"
+                <!-- Номер карты -->
+                <TextView
+                    android:id="@+id/cardNumberMasked"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/card_number_template"
+                    android:textColor="@android:color/white"
+                    android:textSize="18sp"
+                    android:layout_gravity="top|start" />
+
+                <!-- Логотип VISA -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="VISA"
+                    android:textStyle="bold"
+                    android:textColor="@android:color/white"
+                    android:textSize="24sp"
+                    android:layout_gravity="bottom|end"
+                    android:layout_margin="16dp" />
+            </FrameLayout>
+
+
+            <!-- Add Payment Method Button -->
+            <Button
+                android:id="@+id/addPaymentMethodButton"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/payment_paypal_template" />
+                android:text="@string/add_payment_method"
+                android:layout_marginTop="8dp" />
         </LinearLayout>
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
