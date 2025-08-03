@@ -5,12 +5,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import ru.example.canlisu.databinding.FragmentGalleryBinding
+import ru.example.canlisu.databinding.FragmentSubscriptionBinding
 import ru.example.canlisu.R
 
 class GalleryFragment : Fragment() {
 
-    private var _binding: FragmentGalleryBinding? = null
+    private var _binding: FragmentSubscriptionBinding? = null
     private val binding get() = _binding!!
 
     // Примерные данные подписки (можно потом подгружать с API или ViewModel)
@@ -24,7 +24,7 @@ class GalleryFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentGalleryBinding.inflate(inflater, container, false)
+        _binding = FragmentSubscriptionBinding.inflate(inflater, container, false)
 
         binding.apply {
             subStatusView.text = getString(R.string.subscription_status, subscriptionStatus)

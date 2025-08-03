@@ -12,6 +12,7 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.fragment.findNavController
 import ru.example.canlisu.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -21,30 +22,14 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        setSupportActionBar(binding.appBarMain.toolbar)
+        val navController = supportFragmentManager.findFragmentById(R.id.nav_host_fragment_content_main)
+            ?.findNavController()
+            ?: throw IllegalStateException("NavHostFragment not found")
 
-        val drawerLayout: DrawerLayout = binding.drawerLayout
-        val navView: NavigationView = binding.navView
-        val navController = findNavController(R.id.nav_host_fragment_content_main)
-
-        appBarConfiguration = AppBarConfiguration(
-            setOf(R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow),
-            drawerLayout
-        )
-        setupActionBarWithNavController(navController, appBarConfiguration)
-        navView.setupWithNavController(navController)
-
-        // 🧠 Динамическое имя и email
-        val headerView = navView.getHeaderView(0)
-        val nameTextView = headerView.findViewById<TextView>(R.id.nav_user_name)
-        val emailTextView = headerView.findViewById<TextView>(R.id.nav_user_email)
-
-        nameTextView.text = "Ivan Ivanov" // или загрузить из ViewModel/Preferences
-        emailTextView.text = getString(R.string.email_template, "Ivan@example.com")
+        binding.bottomNav.setupWithNavController(navController)
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -52,7 +37,7 @@ class MainActivity : AppCompatActivity() {
         menuInflater.inflate(R.menu.main, menu)
         return true
     }
-    
+
 
     override fun onSupportNavigateUp(): Boolean {
         val navController = findNavController(R.id.nav_host_fragment_content_main)
