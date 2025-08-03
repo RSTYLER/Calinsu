@@ -5,8 +5,8 @@
     android:id="@+id/request_fragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.request.RequestFragment"
-    android:padding="16dp">
+    android:padding="16dp"
+    tools:context=".ui.request.RequestFragment">
 
     <!-- Заголовок -->
     <TextView
@@ -14,47 +14,62 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/describe_issue"
-        android:textStyle="bold"
         android:textSize="20sp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <!-- Поле для описания -->
     <EditText
         android:id="@+id/issueInput"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
         android:autofillHints=""
+        android:gravity="top|start"
         android:hint="@string/hint_issue_description"
         android:inputType="textMultiLine"
         android:minLines="4"
-        android:gravity="top|start"
-        app:layout_constraintTop_toBottomOf="@id/requestTitle"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="16dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/requestTitle" />
 
     <!-- Поле для номера -->
     <EditText
         android:id="@+id/phoneInput"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
         android:autofillHints=""
         android:hint="@string/hint_contact_number"
         android:inputType="phone"
-        app:layout_constraintTop_toBottomOf="@id/issueInput"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="16dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/issueInput" />
 
     <!-- Кнопка отправки -->
     <Button
         android:id="@+id/submitRequestButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/rounded_button"
         android:text="@string/submit_request"
-        app:layout_constraintTop_toBottomOf="@id/phoneInput"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="24dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/phoneInput" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="20dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="20dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>

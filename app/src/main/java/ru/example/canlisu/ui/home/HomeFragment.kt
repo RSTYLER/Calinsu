@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import ru.example.canlisu.databinding.FragmentHomeBinding
 import ru.example.canlisu.R
@@ -45,9 +46,16 @@ class HomeFragment : Fragment() {
 
 
         }
+        binding.swipeRefreshLayout.setOnRefreshListener {
+            // TODO: обновить данные здесь (например, запрос в ViewModel)
+            Toast.makeText(requireContext(), "Refreshing...", Toast.LENGTH_SHORT).show()
+            binding.swipeRefreshLayout.isRefreshing = false
+        }
+
 
         return binding.root
     }
+
 
     override fun onDestroyView() {
         super.onDestroyView()

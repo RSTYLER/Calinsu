@@ -1,4 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Canlisu</string>
+    <string name="navigation_drawer_open">Открыть</string>
+    <string name="navigation_drawer_close">Закрыть</string>
+    <string name="nav_header_title">Иван Иванов</string>
+    <string name="action_settings">Настройки</string>
+    <string name="logout">Выход</string>
+    <string name="menu_profile">Профиль</string>
+    <string name="user_info_title">Информация о Клиенте</string>
+    <string name="first_name_template">Имя: %1$s</string>
+    <string name="last_name_template">Фамилия: %1$s</string>
+    <string name="email_template">эл. почта: %1$s</string>
+    <string name="address_template">Адрес: %1$s</string>
+    <string name="payment_methods_title">Способы оплаты</string>
+    <string name="add_payment_method">Добавить новый способ оплаты</string>
+    <string name="subscription_status">Статус: %1$s</string>
+    <string name="change_subscription">Изменить Подписку</string>
+    <string name="subscription_name">Подписка: %1$s</string>
+    <string name="monthly_payment">Ежемесячный платеж: %1$s</string>
+    <string name="last_billing_date">Последний платеж: %1$s</string>
+    <string name="requests_title">Запросы</string>
+    <string name="create_new_request">Создать новый запрос</string>
+    <string name="describe_issue">Опишите проболему</string>
+    <string name="hint_issue_description">Подробно опишите проблему...</string>
+    <string name="hint_contact_number">Контактный номер телефона</string>
+    <string name="submit_request">Отправить</string>
+    <string name="menu_subscription">Подписки</string>
+    <string name="menu_help">Помощь</string>
 </resources>

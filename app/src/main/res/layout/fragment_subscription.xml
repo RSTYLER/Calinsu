@@ -8,16 +8,12 @@
 
     <LinearLayout
         android:id="@+id/subscription_info_block"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:padding="16dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.078">
+        tools:ignore="MissingConstraints">
 
         <TextView
             android:id="@+id/subStatusView"
@@ -47,5 +43,16 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/last_billing_date" />
+        <Button
+            android:id="@+id/addPaymentMethodButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="@string/change_subscription"
+            android:background="@drawable/rounded_button"
+            android:textColor="@android:color/white" />
     </LinearLayout>
+
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
