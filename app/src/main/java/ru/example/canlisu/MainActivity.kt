@@ -1,23 +1,20 @@
 package ru.example.canlisu
 
 import android.os.Bundle
-import android.view.Menu
-import android.widget.TextView
-import com.google.android.material.snackbar.Snackbar
-import com.google.android.material.navigation.NavigationView
-import androidx.navigation.findNavController
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.navigateUp
-import androidx.navigation.ui.setupActionBarWithNavController
-import androidx.navigation.ui.setupWithNavController
-import androidx.drawerlayout.widget.DrawerLayout
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isVisible
+import androidx.lifecycle.lifecycleScope
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.ui.setupWithNavController
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
 import ru.example.canlisu.databinding.ActivityMainBinding
+// Если делаешь DataStore "запомнить меня":
+// import ru.example.canlisu.prefs.AuthPrefs
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -25,22 +22,36 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val navController = supportFragmentManager.findFragmentById(R.id.nav_host_fragment_content_main)
+        val navController = supportFragmentManager
+            .findFragmentById(R.id.nav_host_fragment_content_main)
             ?.findNavController()
-            ?: throw IllegalStateException("NavHostFragment not found")
+            ?: error("NavHostFragment not found")
+
+        // Скрывать нижнюю навигацию на экране логина
+        navController.addOnDestinationChangedListener { _, destination, _ ->
+            binding.bottomNav.isVisible = destination.id != R.id.loginFragment
+        }
+
+        // Если используешь флаг «залогинен» в DataStore — раскомментируй блок ниже
+        /*
+        lifecycleScope.launch {
+            AuthPrefs.isLoggedIn(this@MainActivity).collectLatest { loggedIn ->
+                if (loggedIn && navController.currentDestination?.id == R.id.loginFragment) {
+                    val options = androidx.navigation.NavOptions.Builder()
+                        .setPopUpTo(navController.graph.startDestinationId, true)
+                        .build()
+                    navController.navigate(R.id.fragment_home, null, options)
+                }
+            }
+        }
+        */
 
         binding.bottomNav.setupWithNavController(navController)
     }
 
-    override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        menuInflater.inflate(R.menu.main, menu)
-        return true
-    }
-
-
     override fun onSupportNavigateUp(): Boolean {
+        // Без AppBarConfiguration:
         val navController = findNavController(R.id.nav_host_fragment_content_main)
-        return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
+        return navController.navigateUp()
     }
 }

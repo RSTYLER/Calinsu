@@ -38,6 +38,16 @@
     <string name="hint_contact_number">Contact phone number</string>
     <string name="submit_request">Submit Request</string>
 
+    <string name="login_logo_cd" translatable="false">App logo</string>
+    <string name="login_title" translatable="false">Welcome back</string>
+    <string name="login_subtitle" translatable="false">Sign in to continue</string>
+    <string name="login_email_label" translatable="false">Email</string>
+    <string name="login_password_label" translatable="false">Password</string>
+    <string name="login_remember_me" translatable="false">Remember me</string>
+    <string name="login_forgot_password" translatable="false">Forgot password?</string>
+    <string name="login_sign_in" translatable="false">Sign In</string>
+    <string name="login_or" translatable="false">or</string>
+    <string name="login_create_account" translatable="false">Create Account</string>
 
 
 
