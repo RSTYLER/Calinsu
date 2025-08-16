@@ -62,7 +62,8 @@
     <string name="register_card_label" translatable="false">Card Number</string>
     <string name="register_sign_up" translatable="false">Sign Up</string>
 
-
+    <string name="error_invalid_name">Допустимы только буквы кириллицы</string>
+    <string name="error_invalid_email">Некорректный email</string>
 
     <string name="menu_subscription">Subscription</string>
     <string name="menu_help">Help</string>
