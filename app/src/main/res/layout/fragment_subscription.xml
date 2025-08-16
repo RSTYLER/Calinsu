@@ -44,7 +44,7 @@
             android:layout_height="wrap_content"
             android:text="@string/last_billing_date" />
         <Button
-            android:id="@+id/addPaymentMethodButton"
+            android:id="@+id/changeSubscriptionButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"

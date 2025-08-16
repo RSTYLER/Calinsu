@@ -6,7 +6,7 @@
     <string name="nav_header_subtitle" translatable="false">name.example@android.com</string>
     <string name="nav_header_desc" translatable="false">Navigation header</string>
     <string name="action_settings">Settings</string>
-    <string name="logout">Logout</string>
+    <string name="logout">Выход</string>
     <string name="full_name" translatable="false">%1$s</string>
 
     <string name="menu_profile">Profile</string>
@@ -29,6 +29,11 @@
     <string name="subscription_name">Subscription: %1$s</string>
     <string name="monthly_payment">Monthly Payment: %1$s</string>
     <string name="last_billing_date">Last Billed: %1$s</string>
+    <string name="choose_subscription">Choose Subscription</string>
+    <string name="confirm_subscription_change">Confirm</string>
+    <string name="sub_option_mini">Live water \"mini\" - 990₽/month</string>
+    <string name="sub_option_standard">Live water \"standard\" - 1290₽/month</string>
+    <string name="sub_option_premium">Live water \"premium\" - 1990₽/month</string>
 
     <string name="requests_title">Requests</string>
     <string name="create_new_request">Create New Request</string>
@@ -48,6 +53,14 @@
     <string name="login_sign_in" translatable="false">Sign In</string>
     <string name="login_or" translatable="false">or</string>
     <string name="login_create_account" translatable="false">Create Account</string>
+
+    <string name="register_title" translatable="false">Create Account</string>
+    <string name="register_first_name_label" translatable="false">First Name</string>
+    <string name="register_last_name_label" translatable="false">Last Name</string>
+    <string name="register_email_label" translatable="false">Email</string>
+    <string name="register_address_label" translatable="false">Address</string>
+    <string name="register_card_label" translatable="false">Card Number</string>
+    <string name="register_sign_up" translatable="false">Sign Up</string>
 
 
 

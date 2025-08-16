@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import ru.example.canlisu.databinding.FragmentHomeBinding
 import ru.example.canlisu.R
 
@@ -43,8 +44,10 @@ class HomeFragment : Fragment() {
             emailView.text = getString(R.string.email_template, email)
             addressView.text = getString(R.string.address_template, address)
             cardNumberMasked.text = getString(R.string.card_number_template, last4Digits)
+        }
 
-
+        binding.logoutButton.setOnClickListener {
+            findNavController().navigate(R.id.action_nav_home_to_loginFragment)
         }
         binding.swipeRefreshLayout.setOnRefreshListener {
             // TODO: обновить данные здесь (например, запрос в ViewModel)

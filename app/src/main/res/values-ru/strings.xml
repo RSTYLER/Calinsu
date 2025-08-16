@@ -19,12 +19,24 @@
     <string name="subscription_name">Подписка: %1$s</string>
     <string name="monthly_payment">Ежемесячный платеж: %1$s</string>
     <string name="last_billing_date">Последний платеж: %1$s</string>
+    <string name="choose_subscription">Выберите подписку</string>
+    <string name="confirm_subscription_change">Подтвердить</string>
+    <string name="sub_option_mini">Живая вода \"мини\" - 990₽/месяц</string>
+    <string name="sub_option_standard">Живая вода \"стандарт\" - 1290₽/месяц</string>
+    <string name="sub_option_premium">Живая вода \"премиум\" - 1990₽/месяц</string>
     <string name="requests_title">Запросы</string>
     <string name="create_new_request">Создать новый запрос</string>
     <string name="describe_issue">Опишите проболему</string>
     <string name="hint_issue_description">Подробно опишите проблему...</string>
     <string name="hint_contact_number">Контактный номер телефона</string>
     <string name="submit_request">Отправить</string>
+    <string name="register_title">Создать аккаунт</string>
+    <string name="register_first_name_label">Имя</string>
+    <string name="register_last_name_label">Фамилия</string>
+    <string name="register_email_label">Эл. почта</string>
+    <string name="register_address_label">Адрес</string>
+    <string name="register_card_label">Номер карты</string>
+    <string name="register_sign_up">Зарегистрироваться</string>
     <string name="menu_subscription">Подписки</string>
     <string name="menu_help">Помощь</string>
 </resources>

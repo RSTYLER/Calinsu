@@ -3,19 +3,27 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@id/loginFragment">
+    app:startDestination="@id/nav_home">
 
     <fragment
         android:id="@+id/nav_home"
         android:name="ru.example.canlisu.ui.home.HomeFragment"
         android:label="Home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_nav_home_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/nav_gallery"
         android:name="ru.example.canlisu.ui.gallery.SubscriptionFragment"
         android:label="@string/menu_subscription"
-        tools:layout="@layout/fragment_subscription" />
+        tools:layout="@layout/fragment_subscription">
+        <action
+            android:id="@+id/action_nav_gallery_to_changeSubscriptionFragment"
+            app:destination="@id/changeSubscriptionFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/nav_slideshow"
@@ -31,7 +39,30 @@
         android:id="@+id/loginFragment"
         android:name="ru.example.canlisu.ui.auth.LoginFragment"
         android:label="Login"
-        tools:layout="@layout/fragment_login" />
+        tools:layout="@layout/fragment_login">
+        <action
+            android:id="@+id/action_loginFragment_to_nav_home"
+            app:destination="@id/nav_home" />
+        <action
+            android:id="@+id/action_loginFragment_to_registrationFragment"
+            app:destination="@id/registrationFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/registrationFragment"
+        android:name="ru.example.canlisu.ui.auth.RegistrationFragment"
+        android:label="Registration"
+        tools:layout="@layout/fragment_registration">
+        <action
+            android:id="@+id/action_registrationFragment_to_nav_home"
+            app:destination="@id/nav_home" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/changeSubscriptionFragment"
+        android:name="ru.example.canlisu.ui.gallery.ChangeSubscriptionFragment"
+        android:label="Change Subscription"
+        tools:layout="@layout/fragment_change_subscription" />
 
     <fragment
         android:id="@+id/requestFragment"
