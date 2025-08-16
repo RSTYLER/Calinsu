@@ -41,6 +41,7 @@ tools:context=".ui.home.HomeFragment">
                         android:id="@+id/firstNameView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+
                         android:text=""
                         android:textSize="16sp"
                         tools:text="@string/first_name_template" />
@@ -49,25 +50,31 @@ tools:context=".ui.home.HomeFragment">
                         android:id="@+id/lastNameView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+
                         android:text=""
                         android:textSize="16sp"
                         tools:text="@string/last_name_template" />
+
 
                     <TextView
                         android:id="@+id/emailView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+
                         android:text=""
                         android:textSize="16sp"
                         tools:text="@string/email_template" />
+
 
                     <TextView
                         android:id="@+id/addressView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+
                         android:text=""
                         android:textSize="16sp"
                         tools:text="@string/address_template" />
+
 
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/logoutButton"
