@@ -43,6 +43,7 @@
         <action
             android:id="@+id/action_loginFragment_to_nav_home"
             app:destination="@id/nav_home" />
+
         <action
             android:id="@+id/action_loginFragment_to_registrationFragment"
             app:destination="@id/registrationFragment" />
@@ -63,6 +64,9 @@
         android:name="ru.example.canlisu.ui.gallery.ChangeSubscriptionFragment"
         android:label="Change Subscription"
         tools:layout="@layout/fragment_change_subscription" />
+
+    </fragment>
+
 
     <fragment
         android:id="@+id/requestFragment"
