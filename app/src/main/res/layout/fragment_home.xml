@@ -70,6 +70,15 @@ tools:context=".ui.home.HomeFragment">
                         android:text="@string/address_template"
                         android:paddingBottom="8dp"/>
 
+                    <Button
+                        android:id="@+id/logoutButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="@string/logout"
+                        android:background="@drawable/rounded_button"
+                        android:textColor="@android:color/white" />
+
                     <!-- Divider -->
                     <View
                         android:layout_width="match_parent"
