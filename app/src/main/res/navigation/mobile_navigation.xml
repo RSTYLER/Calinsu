@@ -19,7 +19,11 @@
         android:id="@+id/nav_gallery"
         android:name="ru.example.canlisu.ui.gallery.SubscriptionFragment"
         android:label="@string/menu_subscription"
-        tools:layout="@layout/fragment_subscription" />
+        tools:layout="@layout/fragment_subscription">
+        <action
+            android:id="@+id/action_nav_gallery_to_changeSubscriptionFragment"
+            app:destination="@id/changeSubscriptionFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/nav_slideshow"
@@ -39,7 +43,30 @@
         <action
             android:id="@+id/action_loginFragment_to_nav_home"
             app:destination="@id/nav_home" />
+
+        <action
+            android:id="@+id/action_loginFragment_to_registrationFragment"
+            app:destination="@id/registrationFragment" />
     </fragment>
+
+    <fragment
+        android:id="@+id/registrationFragment"
+        android:name="ru.example.canlisu.ui.auth.RegistrationFragment"
+        android:label="Registration"
+        tools:layout="@layout/fragment_registration">
+        <action
+            android:id="@+id/action_registrationFragment_to_nav_home"
+            app:destination="@id/nav_home" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/changeSubscriptionFragment"
+        android:name="ru.example.canlisu.ui.gallery.ChangeSubscriptionFragment"
+        android:label="Change Subscription"
+        tools:layout="@layout/fragment_change_subscription" />
+
+    </fragment>
+
 
     <fragment
         android:id="@+id/requestFragment"

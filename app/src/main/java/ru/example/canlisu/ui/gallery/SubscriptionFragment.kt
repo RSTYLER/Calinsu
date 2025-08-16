@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import ru.example.canlisu.databinding.FragmentSubscriptionBinding
 import ru.example.canlisu.R
 
@@ -31,6 +32,9 @@ class SubscriptionFragment : Fragment() {
             subNameView.text = getString(R.string.subscription_name, subscriptionName)
             monthlyPaymentView.text = getString(R.string.monthly_payment, monthlyPayment)
             lastBilledView.text = getString(R.string.last_billing_date, lastBillingDate)
+            changeSubscriptionButton.setOnClickListener {
+                findNavController().navigate(R.id.action_nav_gallery_to_changeSubscriptionFragment)
+            }
         }
 
         return binding.root
