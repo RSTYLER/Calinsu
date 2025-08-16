@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.util.Patterns
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -25,7 +26,13 @@ class LoginFragment : Fragment() {
         _binding = FragmentLoginBinding.inflate(inflater, container, false)
 
         binding.signInButton.setOnClickListener {
-            findNavController().navigate(R.id.action_loginFragment_to_nav_home)
+            val email = binding.emailInput.text?.toString()?.trim() ?: ""
+            if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+                binding.emailLayout.error = getString(R.string.error_invalid_email)
+            } else {
+                binding.emailLayout.error = null
+                findNavController().navigate(R.id.action_loginFragment_to_nav_home)
+            }
         }
 
         binding.createAccountButton.setOnClickListener {
