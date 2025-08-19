@@ -26,9 +26,11 @@ class LoginFragment : Fragment() {
         _binding = FragmentLoginBinding.inflate(inflater, container, false)
 
         binding.signInButton.setOnClickListener {
-            val email = binding.emailInput.text?.toString()?.trim() ?: ""
-            if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-                binding.emailLayout.error = getString(R.string.error_invalid_email)
+            val login = binding.emailInput.text?.toString()?.trim() ?: ""
+            val isEmail = Patterns.EMAIL_ADDRESS.matcher(login).matches()
+            val isPhone = Regex("^\\+7\\d{10}").matches(login)
+            if (!isEmail && !isPhone) {
+                binding.emailLayout.error = getString(R.string.error_invalid_email_or_phone)
             } else {
                 binding.emailLayout.error = null
                 findNavController().navigate(R.id.action_loginFragment_to_nav_home)
