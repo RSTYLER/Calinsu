@@ -30,6 +30,7 @@ class RegistrationFragment : Fragment() {
             val lastName = binding.lastNameInput.text?.toString()?.trim() ?: ""
             val email = binding.emailInput.text?.toString()?.trim() ?: ""
             val phone = binding.phoneInput.text?.toString()?.trim() ?: ""
+            val password = binding.passwordInput.text?.toString() ?: ""
 
             val nameRegex = Regex("^[А-Яа-яЁё]+$")
             var isValid = true
@@ -62,7 +63,17 @@ class RegistrationFragment : Fragment() {
                 binding.phoneLayout.error = null
             }
 
+            if (password.isEmpty()) {
+                binding.passwordLayout.error = getString(R.string.error_invalid_password)
+                isValid = false
+            } else {
+                binding.passwordLayout.error = null
+            }
+
             if (isValid) {
+                val hashedPassword = viewModel.hashPassword(password)
+                binding.passwordInput.text?.clear()
+                // TODO: use hashedPassword when inserting into the database
                 findNavController().navigate(R.id.action_registrationFragment_to_nav_home)
             }
         }

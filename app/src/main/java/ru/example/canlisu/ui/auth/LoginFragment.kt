@@ -27,14 +27,24 @@ class LoginFragment : Fragment() {
 
         binding.signInButton.setOnClickListener {
             val login = binding.emailInput.text?.toString()?.trim() ?: ""
+            val password = binding.passwordInput.text?.toString() ?: ""
             val isEmail = Patterns.EMAIL_ADDRESS.matcher(login).matches()
             val isPhone = Regex("^\\+7\\d{10}").matches(login)
             if (!isEmail && !isPhone) {
                 binding.emailLayout.error = getString(R.string.error_invalid_email_or_phone)
             } else {
                 binding.emailLayout.error = null
-                findNavController().navigate(R.id.action_loginFragment_to_nav_home)
+                // TODO: replace with hashed password from database
+                val storedHash = ""
+                if (viewModel.verifyPassword(password, storedHash)) {
+                    binding.passwordLayout.error = null
+                    binding.passwordInput.text?.clear()
+                    findNavController().navigate(R.id.action_loginFragment_to_nav_home)
+                } else {
+                    binding.passwordLayout.error = getString(R.string.error_invalid_password)
+                }
             }
+            binding.passwordInput.text?.clear()
         }
 
         binding.createAccountButton.setOnClickListener {
