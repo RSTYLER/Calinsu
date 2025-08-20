@@ -12,20 +12,22 @@ import io.github.jan.supabase.postgrest.postgrest
 import io.github.jan.supabase.postgrest.select
 
 class AuthRepository(
-    private val client: SupabaseClient = SupabaseClientProvider.client
+    private val client: SupabaseClient? = SupabaseClientProvider.client,
 ) {
 
     suspend fun register(user: User, passwordHash: String) {
+        val supabase = client ?: throw IllegalStateException("Supabase client is not configured")
         val data = mapOf(
             "email" to user.email,
             "phone" to user.phone,
-            "password_hash" to passwordHash
+            "password_hash" to passwordHash,
         )
-        client.postgrest["users"].insert(data)
+        supabase.postgrest["users"].insert(data)
     }
 
     suspend fun login(emailOrPhone: String, password: String): User? {
-        val users = client.postgrest["users"].select {
+        val supabase = client ?: throw IllegalStateException("Supabase client is not configured")
+        val users = supabase.postgrest["users"].select {
             filter {
                 or {
                     eq("email", emailOrPhone)
