@@ -127,7 +127,7 @@
             <!-- Sign In -->
             <Button
                 android:id="@+id/signInButton"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/login_sign_in"
                 android:textAllCaps="false"
@@ -168,7 +168,7 @@
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/createAccountButton"
                 style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/login_create_account"
                 android:textAllCaps="false"

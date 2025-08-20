@@ -1,11 +1,7 @@
 package ru.example.canlisu.data
 
 import io.github.jan.supabase.SupabaseClient
-import io.github.jan.supabase.postgrest.decodeList
-import io.github.jan.supabase.postgrest.eq
-import io.github.jan.supabase.postgrest.filter
 import io.github.jan.supabase.postgrest.postgrest
-import io.github.jan.supabase.postgrest.select
 
 class SubscriptionRepository(
     private val client: SupabaseClient? = SupabaseClientProvider.client,

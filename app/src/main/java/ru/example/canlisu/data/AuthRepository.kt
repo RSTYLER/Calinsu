@@ -2,14 +2,7 @@ package ru.example.canlisu.data
 
 import at.favre.lib.crypto.bcrypt.BCrypt
 import io.github.jan.supabase.SupabaseClient
-import io.github.jan.supabase.postgrest.decodeList
-import io.github.jan.supabase.postgrest.eq
-import io.github.jan.supabase.postgrest.filter
-import io.github.jan.supabase.postgrest.insert
-import io.github.jan.supabase.postgrest.limit
-import io.github.jan.supabase.postgrest.or
 import io.github.jan.supabase.postgrest.postgrest
-import io.github.jan.supabase.postgrest.select
 
 class AuthRepository(
     private val client: SupabaseClient? = SupabaseClientProvider.client,

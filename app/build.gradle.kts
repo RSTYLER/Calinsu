@@ -70,7 +70,7 @@ dependencies {
     implementation(libs.supabase.kt)
     implementation(libs.supabase.auth)
     implementation(libs.supabase.postgrest)
-    implementation("at.favre.lib:bcrypt:0.10.2")
+    implementation(libs.bcrypt)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
