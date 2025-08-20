@@ -1,14 +1,16 @@
 package ru.example.canlisu.ui.auth
 
 import android.os.Bundle
+import android.util.Patterns
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.util.Patterns
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import com.google.android.material.snackbar.Snackbar
 import ru.example.canlisu.R
+import ru.example.canlisu.data.AuthRepository
 import ru.example.canlisu.databinding.FragmentRegistrationBinding
 
 class RegistrationFragment : Fragment() {
@@ -16,14 +18,40 @@ class RegistrationFragment : Fragment() {
     private var _binding: FragmentRegistrationBinding? = null
     private val binding get() = _binding!!
 
-    private val viewModel: RegistrationViewModel by viewModels()
+    private val viewModel: RegistrationViewModel by viewModels {
+        RegistrationViewModelFactory(AuthRepository())
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
-        savedInstanceState: Bundle?
+        savedInstanceState: Bundle?,
     ): View {
         _binding = FragmentRegistrationBinding.inflate(inflater, container, false)
+
+        viewModel.registrationState.observe(viewLifecycleOwner) { state ->
+            when (state) {
+                AuthState.Loading -> {
+                    binding.progressBar.visibility = View.VISIBLE
+                    binding.signUpButton.isEnabled = false
+                }
+                is AuthState.Success -> {
+                    binding.progressBar.visibility = View.GONE
+                    binding.signUpButton.isEnabled = true
+                    binding.passwordInput.text?.clear()
+                    findNavController().navigate(R.id.action_registrationFragment_to_nav_home)
+                }
+                is AuthState.Error -> {
+                    binding.progressBar.visibility = View.GONE
+                    binding.signUpButton.isEnabled = true
+                    Snackbar.make(
+                        binding.root,
+                        state.message.ifEmpty { getString(R.string.error_network) },
+                        Snackbar.LENGTH_LONG
+                    ).show()
+                }
+            }
+        }
 
         binding.signUpButton.setOnClickListener {
             val firstName = binding.firstNameInput.text?.toString()?.trim() ?: ""
@@ -71,10 +99,7 @@ class RegistrationFragment : Fragment() {
             }
 
             if (isValid) {
-                val hashedPassword = viewModel.hashPassword(password)
-                binding.passwordInput.text?.clear()
-                // TODO: use hashedPassword when inserting into the database
-                findNavController().navigate(R.id.action_registrationFragment_to_nav_home)
+                viewModel.register(email, phone, password)
             }
         }
 
@@ -86,4 +111,3 @@ class RegistrationFragment : Fragment() {
         _binding = null
     }
 }
-
