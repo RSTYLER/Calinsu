@@ -29,6 +29,7 @@ class RegistrationFragment : Fragment() {
             val firstName = binding.firstNameInput.text?.toString()?.trim() ?: ""
             val lastName = binding.lastNameInput.text?.toString()?.trim() ?: ""
             val email = binding.emailInput.text?.toString()?.trim() ?: ""
+            val phone = binding.phoneInput.text?.toString()?.trim() ?: ""
 
             val nameRegex = Regex("^[А-Яа-яЁё]+$")
             var isValid = true
@@ -52,6 +53,13 @@ class RegistrationFragment : Fragment() {
                 isValid = false
             } else {
                 binding.emailLayout.error = null
+            }
+
+            if (!Regex("^\\+7\\d{10}").matches(phone)) {
+                binding.phoneLayout.error = getString(R.string.error_invalid_phone)
+                isValid = false
+            } else {
+                binding.phoneLayout.error = null
             }
 
             if (isValid) {

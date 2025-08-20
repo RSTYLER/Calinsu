@@ -5,5 +5,6 @@ import androidx.lifecycle.ViewModel
 
 class LoginViewModel : ViewModel() {
     val email = MutableLiveData<String>()
+    val phone = MutableLiveData<String>()
     val password = MutableLiveData<String>()
 }

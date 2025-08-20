@@ -34,6 +34,7 @@
     <string name="register_first_name_label">Имя</string>
     <string name="register_last_name_label">Фамилия</string>
     <string name="register_email_label">Эл. почта</string>
+    <string name="register_phone_label">Номер телефона</string>
     <string name="register_address_label">Адрес</string>
     <string name="register_card_label">Номер карты</string>
     <string name="register_sign_up">Зарегистрироваться</string>

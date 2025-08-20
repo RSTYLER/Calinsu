@@ -46,7 +46,7 @@
     <string name="login_logo_cd" translatable="false">App logo</string>
     <string name="login_title" translatable="false">Welcome back</string>
     <string name="login_subtitle" translatable="false">Sign in to continue</string>
-    <string name="login_email_label" translatable="false">Email</string>
+    <string name="login_email_label" translatable="false">Email or phone</string>
     <string name="login_password_label" translatable="false">Password</string>
     <string name="login_remember_me" translatable="false">Remember me</string>
     <string name="login_forgot_password" translatable="false">Forgot password?</string>
@@ -58,12 +58,15 @@
     <string name="register_first_name_label" translatable="false">First Name</string>
     <string name="register_last_name_label" translatable="false">Last Name</string>
     <string name="register_email_label" translatable="false">Email</string>
+    <string name="register_phone_label" translatable="false">Phone</string>
     <string name="register_address_label" translatable="false">Address</string>
     <string name="register_card_label" translatable="false">Card Number</string>
     <string name="register_sign_up" translatable="false">Sign Up</string>
 
     <string name="error_invalid_name">Допустимы только буквы кириллицы</string>
     <string name="error_invalid_email">Некорректный email</string>
+    <string name="error_invalid_phone">Некорректный номер телефона</string>
+    <string name="error_invalid_email_or_phone">Некорректный email или номер телефона</string>
 
     <string name="menu_subscription">Subscription</string>
     <string name="menu_help">Help</string>
