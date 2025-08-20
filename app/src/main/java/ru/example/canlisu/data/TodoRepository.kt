@@ -1,7 +1,7 @@
 package ru.example.canlisu.data
 
 import io.github.jan.supabase.postgrest.from
-import io.github.jan.supabase.postgrest.decodeList
+import io.github.jan.supabase.postgrest.result.decodeList
 
 class TodoRepository {
 
