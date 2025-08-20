@@ -23,6 +23,8 @@
     <string name="add_payment_method">Add New Payment Method</string>
     <string name="card_number_template" translatable="false">**** **** **** %1$s</string>
 
+    <string name="view_todos">View todos</string>
+    <string name="todos_title">Todos</string>
 
 
 
