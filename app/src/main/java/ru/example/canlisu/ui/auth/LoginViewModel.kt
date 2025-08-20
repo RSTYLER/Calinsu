@@ -16,16 +16,21 @@ class LoginViewModel(private val repository: AuthRepository) : ViewModel() {
     fun login(login: String, password: String) {
         viewModelScope.launch {
             _loginState.value = AuthState.Loading
-            try {
-                val user = repository.login(login, password)
-                if (user != null) {
-                    _loginState.value = AuthState.Success(user)
-                } else {
-                    _loginState.value = AuthState.Error("invalid_credentials")
+            repository.login(login, password)
+                .onSuccess { user ->
+                    if (user != null) {
+                        _loginState.value = AuthState.Success(user)
+                    } else {
+                        _loginState.value = AuthState.Error("invalid_credentials")
+                    }
                 }
-            } catch (e: Exception) {
-                _loginState.value = AuthState.Error(e.message ?: "Network error")
-            }
+                .onFailure { e ->
+                    _loginState.value = if (e is IllegalStateException) {
+                        AuthState.Error("Supabase client is not configured. Please configure Supabase.")
+                    } else {
+                        AuthState.Error(e.message ?: "Network error")
+                    }
+                }
         }
     }
 }
