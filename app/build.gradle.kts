@@ -5,12 +5,12 @@ plugins {
 
 android {
     namespace = "ru.example.canlisu"
-    compileSdk = 36
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "ru.example.canlisu"
         minSdk = 26
-        targetSdk = 36
+        targetSdk = 34
         versionCode = 1
         versionName = "1.0"
 

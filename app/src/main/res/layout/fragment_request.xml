@@ -38,7 +38,7 @@
     <EditText
         android:id="@+id/phoneInput"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:layout_marginTop="16dp"
         android:autofillHints=""
         android:hint="@string/hint_contact_number"
@@ -50,7 +50,7 @@
     <!-- Кнопка отправки -->
     <Button
         android:id="@+id/submitRequestButton"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:background="@drawable/rounded_button"

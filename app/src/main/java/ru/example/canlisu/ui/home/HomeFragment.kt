@@ -43,7 +43,7 @@ class HomeFragment : Fragment() {
             lastNameView.text = getString(R.string.last_name_template, lastName)
             emailView.text = getString(R.string.email_template, email)
             addressView.text = getString(R.string.address_template, address)
-            cardNumberMasked.text = getString(R.string.card_number_template, last4Digits)
+            //cardNumberMasked.text = getString(R.string.card_number_template, last4Digits)
         }
 
         binding.logoutButton.setOnClickListener {

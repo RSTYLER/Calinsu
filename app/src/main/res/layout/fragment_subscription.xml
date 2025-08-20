@@ -22,7 +22,9 @@
                 android:id="@+id/subStatusView"
                 style="@style/SectionTitle"
                 android:layout_marginBottom="8dp"
-                android:text="@string/subscription_status" />
+                android:text="@string/subscription_status"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
 
             <TextView
                 android:id="@+id/subNameView"
@@ -48,6 +50,7 @@
                 android:id="@+id/changeSubscriptionButton"
                 style="@style/PrimaryButton"
                 android:layout_marginTop="20dp"
+                android:layout_width="wrap_content"
                 android:text="@string/change_subscription" />
         </LinearLayout>
     </com.google.android.material.card.MaterialCardView>

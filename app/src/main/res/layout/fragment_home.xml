@@ -35,7 +35,9 @@ tools:context=".ui.home.HomeFragment">
 
                     <TextView
                         style="@style/SectionTitle"
-                        android:text="@string/user_info_title" />
+                        android:text="@string/user_info_title"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
 
                     <TextView
                         android:id="@+id/firstNameView"
@@ -79,6 +81,7 @@ tools:context=".ui.home.HomeFragment">
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/logoutButton"
                         style="@style/PrimaryButton"
+                        android:layout_width="wrap_content"
                         android:layout_marginTop="8dp"
                         android:text="@string/logout" />
                 </LinearLayout>
@@ -94,40 +97,15 @@ tools:context=".ui.home.HomeFragment">
 
                     <TextView
                         style="@style/SectionTitle"
-                        android:text="@string/payment_methods_title" />
+                        android:text="@string/payment_methods_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
 
-                    <FrameLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="200dp"
-                        android:layout_marginBottom="16dp"
-                        android:background="@drawable/bg_visa_card"
-                        android:elevation="4dp"
-                        android:padding="16dp">
-
-                        <TextView
-                            android:id="@+id/cardNumberMasked"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text=""
-                            android:textColor="@android:color/white"
-                            android:textSize="18sp"
-                            android:layout_gravity="top|start"
-                            tools:text="@string/card_number_template" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="VISA"
-                            android:textStyle="bold"
-                            android:textColor="@android:color/white"
-                            android:textSize="24sp"
-                            android:layout_gravity="bottom|end"
-                            android:layout_margin="16dp" />
-                    </FrameLayout>
 
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/addPaymentMethodButton"
                         style="@style/PrimaryButton"
+                        android:layout_width="wrap_content"
                         android:layout_marginTop="8dp"
                         android:text="@string/add_payment_method" />
                 </LinearLayout>

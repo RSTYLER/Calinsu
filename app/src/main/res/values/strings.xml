@@ -9,6 +9,8 @@
     <string name="logout">Выход</string>
     <string name="full_name" translatable="false">%1$s</string>
 
+
+    <string name="card_name" translatable="false">Visa</string>
     <string name="menu_profile">Profile</string>
     <string name="user_info_title">User Information</string>
     <string name="first_name_template">First Name: %1$s</string>
@@ -63,10 +65,10 @@
     <string name="register_card_label" translatable="false">Card Number</string>
     <string name="register_sign_up" translatable="false">Sign Up</string>
 
-    <string name="error_invalid_name">Допустимы только буквы кириллицы</string>
-    <string name="error_invalid_email">Некорректный email</string>
-    <string name="error_invalid_phone">Некорректный номер телефона</string>
-    <string name="error_invalid_email_or_phone">Некорректный email или номер телефона</string>
+    <string name="error_invalid_name" translatable="false">Допустимы только буквы кириллицы</string>
+    <string name="error_invalid_email" translatable="false">Некорректный email</string>
+    <string name="error_invalid_phone" translatable="false">Некорректный номер телефона</string>
+    <string name="error_invalid_email_or_phone" translatable="false">Некорректный email или номер телефона</string>
 
     <string name="menu_subscription">Subscription</string>
     <string name="menu_help">Help</string>
