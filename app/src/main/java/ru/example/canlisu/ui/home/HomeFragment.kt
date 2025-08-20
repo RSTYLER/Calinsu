@@ -49,6 +49,9 @@ class HomeFragment : Fragment() {
         binding.logoutButton.setOnClickListener {
             findNavController().navigate(R.id.action_nav_home_to_loginFragment)
         }
+        binding.viewTodosButton.setOnClickListener {
+            findNavController().navigate(R.id.action_nav_home_to_todoListFragment)
+        }
         binding.swipeRefreshLayout.setOnRefreshListener {
             // TODO: обновить данные здесь (например, запрос в ViewModel)
             Toast.makeText(requireContext(), "Refreshing...", Toast.LENGTH_SHORT).show()

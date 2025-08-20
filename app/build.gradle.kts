@@ -11,8 +11,10 @@ val localProperties = Properties().apply {
         file.inputStream().use { load(it) }
     }
 }
-val supabaseUrl: String = localProperties.getProperty("SUPABASE_URL") ?: ""
-val supabaseKey: String = localProperties.getProperty("SUPABASE_KEY") ?: ""
+val supabaseUrl: String = localProperties.getProperty("SUPABASE_URL")
+    ?: "https://rmvhlleibudqesemzita.supabase.co"
+val supabaseKey: String = localProperties.getProperty("SUPABASE_KEY")
+    ?: "sb_publishable_l-7bAioifiKvlBbPu4Q3PQ_7XNkODv3"
 
 android {
     namespace = "ru.example.canlisu"
@@ -62,6 +64,7 @@ dependencies {
     implementation(libs.androidx.constraintlayout)
     implementation(libs.androidx.lifecycle.livedata.ktx)
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
+    implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.navigation.fragment.ktx)
     implementation(libs.androidx.navigation.ui.ktx)
     implementation(libs.supabase.kt)

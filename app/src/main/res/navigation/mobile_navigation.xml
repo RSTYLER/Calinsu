@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_nav_home_to_loginFragment"
             app:destination="@id/loginFragment" />
+        <action
+            android:id="@+id/action_nav_home_to_todoListFragment"
+            app:destination="@id/todoListFragment" />
     </fragment>
 
     <fragment
@@ -73,6 +76,12 @@
         android:name="ru.example.canlisu.ui.request.RequestFragment"
         android:label="New Request"
         tools:layout="@layout/fragment_request" />
+
+    <fragment
+        android:id="@+id/todoListFragment"
+        android:name="ru.example.canlisu.ui.todo.TodoListFragment"
+        android:label="@string/todos_title"
+        tools:layout="@layout/fragment_todo_list" />
 
 </navigation>
 

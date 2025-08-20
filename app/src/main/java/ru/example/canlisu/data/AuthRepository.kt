@@ -15,30 +15,35 @@ class AuthRepository(
     private val client: SupabaseClient? = SupabaseClientProvider.client,
 ) {
 
-    suspend fun register(user: User, passwordHash: String) {
-        val supabase = client ?: throw IllegalStateException("Supabase client is not configured")
+    suspend fun register(user: User, passwordHash: String): Result<Unit> {
+        val supabase = client ?: return Result.failure(IllegalStateException("Supabase client is not configured"))
         val data = mapOf(
             "email" to user.email,
             "phone" to user.phone,
             "password_hash" to passwordHash,
         )
-        supabase.postgrest["users"].insert(data)
+        return runCatching {
+            supabase.postgrest["users"].insert(data)
+            Unit
+        }
     }
 
-    suspend fun login(emailOrPhone: String, password: String): User? {
-        val supabase = client ?: throw IllegalStateException("Supabase client is not configured")
-        val users = supabase.postgrest["users"].select {
-            filter {
-                or {
-                    eq("email", emailOrPhone)
-                    eq("phone", emailOrPhone)
+    suspend fun login(emailOrPhone: String, password: String): Result<User?> {
+        val supabase = client ?: return Result.failure(IllegalStateException("Supabase client is not configured"))
+        return runCatching {
+            val users = supabase.postgrest["users"].select {
+                filter {
+                    or {
+                        eq("email", emailOrPhone)
+                        eq("phone", emailOrPhone)
+                    }
                 }
-            }
-            limit(1)
-        }.decodeList<User>()
+                limit(1)
+            }.decodeList<User>()
 
-        val user = users.firstOrNull() ?: return null
-        val verified = BCrypt.verifyer().verify(password.toCharArray(), user.passwordHash)
-        return if (verified.verified) user else null
+            val user = users.firstOrNull() ?: return@runCatching null
+            val verified = BCrypt.verifyer().verify(password.toCharArray(), user.passwordHash)
+            if (verified.verified) user else null
+        }
     }
 }

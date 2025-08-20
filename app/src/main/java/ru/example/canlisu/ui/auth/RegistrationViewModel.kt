@@ -17,14 +17,19 @@ class RegistrationViewModel(private val repository: AuthRepository) : ViewModel(
     fun register(email: String, phone: String, password: String) {
         viewModelScope.launch {
             _registrationState.value = AuthState.Loading
-            try {
-                val hashedPassword = hashPassword(password)
-                val user = User(email = email, phone = phone, passwordHash = hashedPassword)
-                repository.register(user, hashedPassword)
-                _registrationState.value = AuthState.Success(Unit)
-            } catch (e: Exception) {
-                _registrationState.value = AuthState.Error(e.message ?: "Network error")
-            }
+            val hashedPassword = hashPassword(password)
+            val user = User(email = email, phone = phone, passwordHash = hashedPassword)
+            repository.register(user, hashedPassword)
+                .onSuccess {
+                    _registrationState.value = AuthState.Success(Unit)
+                }
+                .onFailure { e ->
+                    _registrationState.value = if (e is IllegalStateException) {
+                        AuthState.Error("Supabase client is not configured. Please configure Supabase.")
+                    } else {
+                        AuthState.Error(e.message ?: "Network error")
+                    }
+                }
         }
     }
 

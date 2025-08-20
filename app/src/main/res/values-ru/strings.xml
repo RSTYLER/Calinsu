@@ -14,6 +14,8 @@
     <string name="address_template">Адрес: %1$s</string>
     <string name="payment_methods_title">Способы оплаты</string>
     <string name="add_payment_method">Добавить новый способ оплаты</string>
+    <string name="view_todos">Посмотреть задачи</string>
+    <string name="todos_title">Задачи</string>
     <string name="subscription_status">Статус: %1$s</string>
     <string name="change_subscription">Изменить Подписку</string>
     <string name="subscription_name">Подписка: %1$s</string>
