@@ -1,7 +1,18 @@
+import java.util.Properties
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
 }
+
+val localProperties = Properties().apply {
+    val file = rootProject.file("local.properties")
+    if (file.exists()) {
+        file.inputStream().use { load(it) }
+    }
+}
+val supabaseUrl: String = localProperties.getProperty("SUPABASE_URL") ?: ""
+val supabaseKey: String = localProperties.getProperty("SUPABASE_KEY") ?: ""
 
 android {
     namespace = "ru.example.canlisu"
@@ -15,6 +26,9 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+        buildConfigField("String", "SUPABASE_URL", "\"$supabaseUrl\"")
+        buildConfigField("String", "SUPABASE_KEY", "\"$supabaseKey\"")
     }
 
     buildTypes {
@@ -49,6 +63,9 @@ dependencies {
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
     implementation(libs.androidx.navigation.fragment.ktx)
     implementation(libs.androidx.navigation.ui.ktx)
+    implementation(libs.supabase.kt)
+    implementation(libs.supabase.auth)
+    implementation(libs.supabase.postgrest)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
