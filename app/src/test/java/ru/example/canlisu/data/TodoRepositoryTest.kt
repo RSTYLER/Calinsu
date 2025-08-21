@@ -12,6 +12,7 @@ class TodoRepositoryTest {
         val delegateField = SupabaseClientProvider::class.java.getDeclaredField("client\$delegate")
         delegateField.isAccessible = true
         delegateField.set(null, lazy { null })
+
     }
 
     @Test
