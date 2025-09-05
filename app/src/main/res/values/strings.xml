@@ -75,6 +75,6 @@
     <string name="register_password_label" translatable="false">Password</string>
     <string name="error_network" translatable="false">Network error</string>
 
-    <string name="menu_subscription">Subscription</string>
-    <string name="menu_help">Help</string>
+    <string name="menu_subscription">Subscriptions</string>
+    <string name="menu_help">Support</string>
 </resources>
