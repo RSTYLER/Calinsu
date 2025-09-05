@@ -9,5 +9,8 @@
     <color name="white">#FFFFFFFF</color>
     <color name="green">#4CAF00</color>
     <color name="gray">#808080</color>
+    <color name="bottom_nav_active">#0C7AE7</color>
+    <color name="bottom_nav_inactive">@color/gray</color>
+
     <color name="bottom_nav_background">@color/white</color>
 </resources>

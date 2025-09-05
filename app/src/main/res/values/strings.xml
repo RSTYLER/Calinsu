@@ -11,7 +11,7 @@
 
 
     <string name="card_name" translatable="false">Visa</string>
-    <string name="menu_profile">Profile</string>
+    <string name="menu_profile">Главная</string>
     <string name="user_info_title">User Information</string>
     <string name="first_name_template">First Name: %1$s</string>
     <string name="last_name_template">Last Name: %1$s</string>
@@ -75,6 +75,7 @@
     <string name="register_password_label" translatable="false">Password</string>
     <string name="error_network" translatable="false">Network error</string>
 
-    <string name="menu_subscription">Subscriptions</string>
-    <string name="menu_help">Support</string>
+    <string name="menu_subscription">Обслуживание</string>
+    <string name="menu_help">Поддержка</string>
+
 </resources>
