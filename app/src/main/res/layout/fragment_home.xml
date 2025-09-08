@@ -25,6 +25,37 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:paddingTop="16dp"
+                    android:paddingBottom="16dp">
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="1dp"
+                        android:layout_weight="1"
+                        android:background="@android:color/black" />
+
+                    <TextView
+                        android:id="@+id/homeHeader"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingStart="8dp"
+                        android:paddingEnd="8dp"
+                        android:fontFamily="@font/montserrat_bold"
+                        android:text="CANLISU"
+                        android:textStyle="bold" />
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="1dp"
+                        android:layout_weight="1"
+                        android:background="@android:color/black" />
+                </LinearLayout>
+
                 <com.google.android.material.card.MaterialCardView
                     style="@style/SectionCard">
 
@@ -39,43 +70,101 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content" />
 
-                        <TextView
-                            android:id="@+id/firstNameView"
-                            android:layout_width="wrap_content"
+                        <LinearLayout
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:paddingTop="4dp"
+                            android:paddingBottom="4dp">
 
-                            android:text=""
-                            android:textSize="16sp"
-                            tools:text="@string/first_name_template" />
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="16dp"
+                                android:text="@string/first_name_label"
+                                android:textStyle="bold" />
 
-                        <TextView
-                            android:id="@+id/lastNameView"
-                            android:layout_width="wrap_content"
+                            <TextView
+                                android:id="@+id/firstNameView"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="16dp"
+                                android:layout_weight="1"
+                                android:text=""
+                                android:textSize="16sp" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:paddingTop="4dp"
+                            android:paddingBottom="4dp">
 
-                            android:text=""
-                            android:textSize="16sp"
-                            tools:text="@string/last_name_template" />
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="16dp"
+                                android:text="@string/last_name_label"
+                                android:textStyle="bold" />
 
+                            <TextView
+                                android:id="@+id/lastNameView"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="16dp"
+                                android:layout_weight="1"
+                                android:text=""
+                                android:textSize="16sp" />
+                        </LinearLayout>
 
-                        <TextView
-                            android:id="@+id/emailView"
-                            android:layout_width="wrap_content"
+                        <LinearLayout
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:paddingTop="4dp"
+                            android:paddingBottom="4dp">
 
-                            android:text=""
-                            android:textSize="16sp"
-                            tools:text="@string/email_template" />
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="16dp"
+                                android:text="@string/email_label"
+                                android:textStyle="bold" />
 
+                            <TextView
+                                android:id="@+id/emailView"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="16dp"
+                                android:layout_weight="1"
+                                android:text=""
+                                android:textSize="16sp" />
+                        </LinearLayout>
 
-                        <TextView
-                            android:id="@+id/addressView"
-                            android:layout_width="wrap_content"
+                        <LinearLayout
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:paddingTop="4dp"
+                            android:paddingBottom="4dp">
 
-                            android:text=""
-                            android:textSize="16sp"
-                            tools:text="@string/address_template" />
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="16dp"
+                                android:text="@string/address_label"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/addressView"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="16dp"
+                                android:layout_weight="1"
+                                android:text=""
+                                android:textSize="16sp" />
+                        </LinearLayout>
 
 
                         <com.google.android.material.button.MaterialButton

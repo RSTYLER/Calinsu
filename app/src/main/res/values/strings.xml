@@ -13,10 +13,10 @@
     <string name="card_name" translatable="false">Visa</string>
     <string name="menu_profile">Главная</string>
     <string name="user_info_title">User Information</string>
-    <string name="first_name_template">First Name: %1$s</string>
-    <string name="last_name_template">Last Name: %1$s</string>
-    <string name="email_template">Email: %1$s</string>
-    <string name="address_template">Address: %1$s</string>
+    <string name="first_name_label">First Name:</string>
+    <string name="last_name_label">Last Name:</string>
+    <string name="email_label">Email:</string>
+    <string name="address_label">Address:</string>
     <string name="payment_methods_title">Payment Methods</string>
     <string name="payment_card_template" translatable="false">Card: %1$s</string>
     <string name="payment_paypal_template" translatable="false">PayPal: %1$s</string>

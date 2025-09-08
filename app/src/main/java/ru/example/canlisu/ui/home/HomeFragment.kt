@@ -38,11 +38,11 @@ class HomeFragment : Fragment() {
 
         // Устанавливаем текст в нужные TextView
         binding.apply {
-            // Эти ID должны быть прописаны в fragment_home.xml
-            firstNameView.text = getString(R.string.first_name_template, firstName)
-            lastNameView.text = getString(R.string.last_name_template, lastName)
-            emailView.text = getString(R.string.email_template, email)
-            addressView.text = getString(R.string.address_template, address)
+            // Устанавливаем значения в TextView без шаблонов
+            firstNameView.text = firstName
+            lastNameView.text = lastName
+            emailView.text = email
+            addressView.text = address
             //cardNumberMasked.text = getString(R.string.card_number_template, last4Digits)
         }
 
