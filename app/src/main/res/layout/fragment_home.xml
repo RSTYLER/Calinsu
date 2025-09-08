@@ -226,7 +226,7 @@
 
                         <FrameLayout
                             android:layout_width="match_parent"
-                            android:layout_height="120dp"
+                            android:layout_height="200dp"
                             android:layout_margin="16dp"
                             android:background="@drawable/bg_visa_card">
 
@@ -245,7 +245,8 @@
                                 android:id="@+id/cardNumberSample"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_gravity="center"
+                                android:layout_gravity="bottom|right"
+                                android:layout_margin="16dp"
                                 android:text="@string/card_number_example"
                                 android:textColor="@android:color/white"
                                 android:textSize="20sp" />

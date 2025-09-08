@@ -11,6 +11,7 @@
     <string name="first_name_label">Имя:</string>
     <string name="last_name_label">Фамилия:</string>
     <string name="email_label">эл. почта:</string>
+    <string name="phone_label">Телефон:</string>
     <string name="address_label">Адрес:</string>
     <string name="payment_methods_title">Способы оплаты</string>
     <string name="add_payment_method">Добавить новый способ оплаты</string>
