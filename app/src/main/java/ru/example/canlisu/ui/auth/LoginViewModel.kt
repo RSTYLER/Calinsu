@@ -7,6 +7,8 @@ import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
 import ru.example.canlisu.data.AuthRepository
 import ru.example.canlisu.data.User
+import ru.example.canlisu.data.InvalidPasswordException
+import ru.example.canlisu.data.UserNotFoundException
 
 class LoginViewModel(private val repository: AuthRepository) : ViewModel() {
 
@@ -18,17 +20,14 @@ class LoginViewModel(private val repository: AuthRepository) : ViewModel() {
             _loginState.value = AuthState.Loading
             repository.login(login, password)
                 .onSuccess { user ->
-                    if (user != null) {
-                        _loginState.value = AuthState.Success(user)
-                    } else {
-                        _loginState.value = AuthState.Error("invalid_credentials")
-                    }
+                    _loginState.value = AuthState.Success(user)
                 }
                 .onFailure { e ->
-                    _loginState.value = if (e is IllegalStateException) {
-                        AuthState.Error("Supabase client is not configured. Please configure Supabase.")
-                    } else {
-                        AuthState.Error(e.message ?: "Network error")
+                    _loginState.value = when (e) {
+                        is UserNotFoundException -> AuthState.Error("user_not_found")
+                        is InvalidPasswordException -> AuthState.Error("invalid_password")
+                        is IllegalStateException -> AuthState.Error("Supabase client is not configured. Please configure Supabase.")
+                        else -> AuthState.Error(e.message ?: "Network error")
                     }
                 }
         }

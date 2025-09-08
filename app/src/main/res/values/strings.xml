@@ -72,8 +72,13 @@
     <string name="error_invalid_phone" translatable="false">Некорректный номер телефона</string>
     <string name="error_invalid_email_or_phone" translatable="false">Некорректный email или номер телефона</string>
     <string name="error_invalid_password" translatable="false">Invalid password</string>
+    <string name="error_user_not_found" translatable="false">User not found</string>
     <string name="register_password_label" translatable="false">Password</string>
     <string name="error_network" translatable="false">Network error</string>
+
+    <string name="password_recovery_email_label" translatable="false">Email</string>
+    <string name="password_recovery_send" translatable="false">Send</string>
+    <string name="password_recovery_success" translatable="false">If an account exists with that email, we’ve sent reset instructions.</string>
 
     <string name="menu_subscription">Обслуживание</string>
     <string name="menu_help">Поддержка</string>

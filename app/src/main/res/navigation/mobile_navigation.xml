@@ -52,6 +52,9 @@
         <action
             android:id="@+id/action_loginFragment_to_registrationFragment"
             app:destination="@id/registrationFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_passwordRecoveryFragment"
+            app:destination="@id/passwordRecoveryFragment" />
     </fragment>
 
     <fragment
@@ -63,6 +66,18 @@
             android:id="@+id/action_registrationFragment_to_nav_home"
             app:destination="@id/nav_home"
             app:popUpTo="@id/loginFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/passwordRecoveryFragment"
+        android:name="ru.example.canlisu.ui.auth.PasswordRecoveryFragment"
+        android:label="Password Recovery"
+        tools:layout="@layout/fragment_password_recovery">
+        <action
+            android:id="@+id/action_passwordRecoveryFragment_to_loginFragment"
+            app:destination="@id/loginFragment"
+            app:popUpTo="@id/passwordRecoveryFragment"
             app:popUpToInclusive="true" />
     </fragment>
 
