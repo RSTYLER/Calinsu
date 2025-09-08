@@ -38,6 +38,7 @@ class LoginFragment : Fragment() {
                 is AuthState.Success -> {
                     binding.progressBar.visibility = View.GONE
                     binding.signInButton.isEnabled = true
+                    binding.emailLayout.error = null
                     binding.passwordLayout.error = null
                     binding.passwordInput.text?.clear()
                     findNavController().navigate(R.id.action_loginFragment_to_nav_home)
@@ -45,14 +46,24 @@ class LoginFragment : Fragment() {
                 is AuthState.Error -> {
                     binding.progressBar.visibility = View.GONE
                     binding.signInButton.isEnabled = true
-                    if (state.message == "invalid_credentials") {
-                        binding.passwordLayout.error = getString(R.string.error_invalid_password)
-                    } else {
-                        Snackbar.make(
-                            binding.root,
-                            state.message.ifEmpty { getString(R.string.error_network) },
-                            Snackbar.LENGTH_LONG
-                        ).show()
+                    when (state.message) {
+                        "user_not_found" -> {
+                            binding.emailLayout.error = getString(R.string.error_user_not_found)
+                            binding.passwordLayout.error = null
+                        }
+                        "invalid_password" -> {
+                            binding.passwordLayout.error = getString(R.string.error_invalid_password)
+                            binding.emailLayout.error = null
+                        }
+                        else -> {
+                            binding.emailLayout.error = null
+                            binding.passwordLayout.error = null
+                            Snackbar.make(
+                                binding.root,
+                                state.message.ifEmpty { getString(R.string.error_network) },
+                                Snackbar.LENGTH_LONG
+                            ).show()
+                        }
                     }
                 }
             }
@@ -78,6 +89,10 @@ class LoginFragment : Fragment() {
 
         binding.createAccountButton.setOnClickListener {
             findNavController().navigate(R.id.action_loginFragment_to_registrationFragment)
+        }
+
+        binding.forgotLink.setOnClickListener {
+            findNavController().navigate(R.id.action_loginFragment_to_passwordRecoveryFragment)
         }
 
         return binding.root
