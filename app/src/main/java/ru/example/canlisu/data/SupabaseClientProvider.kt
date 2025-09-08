@@ -9,36 +9,26 @@ import ru.example.canlisu.BuildConfig
 
 object SupabaseClientProvider {
 
-    @Volatile
-    private var _client: SupabaseClient? = null
-    @Volatile
-    private var allowInit: Boolean = true
-
-    val client: SupabaseClient?
-        get() {
-            initClientIfNeeded()
-            return _client
-        }
-
-    private fun initClientIfNeeded() {
-        if (!allowInit || _client != null) return
-        val url = "https://rmvhlleibudqesemzita.supabase.co"
-        val key = "sb_publishable_l-7bAioifiKvlBbPu4Q3PQ_7XNkODv3"
+    val client: SupabaseClient? by lazy {
+        val url = BuildConfig.SUPABASE_URL
+        val key = BuildConfig.SUPABASE_KEY
         if (url.isBlank() || key.isBlank()) {
             Log.e("SupabaseClientProvider", "Supabase credentials are missing")
-            return
-        }
-        _client = createSupabaseClient(
-            supabaseUrl = url,
-            supabaseKey = key
-        ) {
-            install(Postgrest)
-            install(Auth)
+            null
+        } else {
+            createSupabaseClient(
+                supabaseUrl = url,
+                supabaseKey = key
+            ) {
+                install(Postgrest)
+                install(Auth)
+            }
         }
     }
 
     fun clearForTests() {
-        _client = null
-        allowInit = false
+        val field = SupabaseClientProvider::class.java.getDeclaredField("client\$delegate")
+        field.isAccessible = true
+        field.set(null, lazy<SupabaseClient?> { null })
     }
 }
