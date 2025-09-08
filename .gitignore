@@ -13,3 +13,7 @@
 .externalNativeBuild
 .cxx
 local.properties
+
+# Ignore local font binaries
+app/src/main/res/font/*.ttf
+app/src/main/res/font/*.otf

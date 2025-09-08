@@ -45,7 +45,7 @@
                         android:layout_height="wrap_content"
                         android:paddingStart="8dp"
                         android:paddingEnd="8dp"
-                        android:fontFamily="@font/montserrat_bold"
+                        android:fontFamily="@font/inter"
                         android:text="CANLISU"
                         android:textStyle="bold" />
 
