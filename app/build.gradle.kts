@@ -11,10 +11,7 @@ val localProperties = Properties().apply {
         file.inputStream().use { load(it) }
     }
 }
-val supabaseUrl: String = localProperties.getProperty("SUPABASE_URL")
-    ?: "https://rmvhlleibudqesemzita.supabase.co"
-val supabaseKey: String = localProperties.getProperty("SUPABASE_KEY")
-    ?: "sb_publishable_l-7bAioifiKvlBbPu4Q3PQ_7XNkODv3"
+
 
 android {
     namespace = "ru.example.canlisu"
@@ -29,9 +26,7 @@ android {
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 
-        buildConfigField("String", "SUPABASE_URL", "\"$supabaseUrl\"")
-        buildConfigField("String", "SUPABASE_KEY", "\"$supabaseKey\"")
-    }
+        }
 
     buildTypes {
         release {

@@ -22,8 +22,8 @@ object SupabaseClientProvider {
 
     private fun initClientIfNeeded() {
         if (!allowInit || _client != null) return
-        val url = BuildConfig.SUPABASE_URL
-        val key = BuildConfig.SUPABASE_KEY
+        val url = "https://rmvhlleibudqesemzita.supabase.co"
+        val key = "sb_publishable_l-7bAioifiKvlBbPu4Q3PQ_7XNkODv3"
         if (url.isBlank() || key.isBlank()) {
             Log.e("SupabaseClientProvider", "Supabase credentials are missing")
             return
