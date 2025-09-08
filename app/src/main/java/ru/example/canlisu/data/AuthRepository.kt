@@ -2,6 +2,7 @@ package ru.example.canlisu.data
 
 import at.favre.lib.crypto.bcrypt.BCrypt
 import io.github.jan.supabase.SupabaseClient
+import io.github.jan.supabase.auth.auth
 import io.github.jan.supabase.postgrest.postgrest
 
 class AuthRepository(
@@ -21,7 +22,7 @@ class AuthRepository(
         }
     }
 
-    suspend fun login(emailOrPhone: String, password: String): Result<User?> {
+    suspend fun login(emailOrPhone: String, password: String): Result<User> {
         val supabase = client ?: return Result.failure(IllegalStateException("Supabase client is not configured"))
         return runCatching {
             val users = supabase.postgrest["users"].select {
@@ -34,9 +35,17 @@ class AuthRepository(
                 limit(1)
             }.decodeList<User>()
 
-            val user = users.firstOrNull() ?: return@runCatching null
+            val user = users.firstOrNull() ?: throw UserNotFoundException()
             val verified = BCrypt.verifyer().verify(password.toCharArray(), user.passwordHash)
-            if (verified.verified) user else null
+            if (!verified.verified) throw InvalidPasswordException()
+            user
+        }
+    }
+
+    suspend fun resetPassword(email: String): Result<Unit> {
+        val supabase = client ?: return Result.failure(IllegalStateException("Supabase client is not configured"))
+        return runCatching {
+            supabase.auth.resetPasswordForEmail(email)
         }
     }
 }
