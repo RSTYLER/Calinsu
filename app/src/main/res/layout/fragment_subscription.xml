@@ -21,7 +21,7 @@
             <TextView
                 android:id="@+id/subStatusView"
                 style="@style/SectionTitle"
-                android:layout_marginBottom="8dp"
+                android:layout_margin="10dp"
                 android:text="@string/subscription_status"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
@@ -30,28 +30,31 @@
                 android:id="@+id/subNameView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="4dp"
+                android:layout_margin="20dp"
                 android:text="@string/subscription_name" />
 
             <TextView
                 android:id="@+id/monthlyPaymentView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="4dp"
+                android:layout_margin="20dp"
                 android:text="@string/monthly_payment" />
 
             <TextView
                 android:id="@+id/lastBilledView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_margin="20dp"
                 android:text="@string/last_billing_date" />
 
-            <com.google.android.material.button.MaterialButton
+            <Button
                 android:id="@+id/changeSubscriptionButton"
-                style="@style/PrimaryButton"
-                android:layout_marginTop="20dp"
+                android:background="@drawable/rounded_button"
+                android:layout_margin="20dp"
                 android:layout_width="wrap_content"
-                android:text="@string/change_subscription" />
+                android:text="@string/change_subscription"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"/>
         </LinearLayout>
     </com.google.android.material.card.MaterialCardView>
 
