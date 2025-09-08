@@ -43,4 +43,7 @@
     <string name="menu_subscription">Подписки</string>
     <string name="menu_help">Помощь</string>
     <string name="error_network">Ошибка сети</string>
+    <string name="tab_home">Для дома</string>
+    <string name="tab_business">Для бизнеса</string>
+    <string name="select_plan">Выбрать тариф</string>
 </resources>
