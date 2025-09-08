@@ -16,12 +16,15 @@
     <string name="first_name_label">First Name:</string>
     <string name="last_name_label">Last Name:</string>
     <string name="email_label">Email:</string>
+    <string name="phone_label">Phone:</string>
     <string name="address_label">Address:</string>
     <string name="payment_methods_title">Payment Methods</string>
     <string name="payment_card_template" translatable="false">Card: %1$s</string>
     <string name="payment_paypal_template" translatable="false">PayPal: %1$s</string>
     <string name="add_payment_method">Add New Payment Method</string>
     <string name="card_number_template" translatable="false">**** **** **** %1$s</string>
+    <string name="mir_label" translatable="false">МИР</string>
+    <string name="card_number_example" translatable="false">1234 5678 9012 3456</string>
 
     <string name="view_todos">View todos</string>
     <string name="todos_title">Todos</string>

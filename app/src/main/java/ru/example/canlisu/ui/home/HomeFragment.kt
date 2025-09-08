@@ -22,6 +22,7 @@ class HomeFragment : Fragment() {
     private val lastName = "Ivanov"
 
     private val email = "Ivan@example.com"
+    private val phone = "+7 999 123-45-67"
     private val address = "123 Example Street, NY"
 
     val last4Digits = "1234" // заменить на реальные данные
@@ -42,6 +43,7 @@ class HomeFragment : Fragment() {
             firstNameView.text = firstName
             lastNameView.text = lastName
             emailView.text = email
+            phoneView.text = phone
             addressView.text = address
             //cardNumberMasked.text = getString(R.string.card_number_template, last4Digits)
         }
