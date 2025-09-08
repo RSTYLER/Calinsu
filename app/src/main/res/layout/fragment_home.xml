@@ -45,7 +45,7 @@
                         android:layout_height="wrap_content"
                         android:paddingStart="8dp"
                         android:paddingEnd="8dp"
-                        android:fontFamily="@font/inter"
+                        android:fontFamily="@font/montserrat_bold"
                         android:text="CANLISU"
                         android:textStyle="bold" />
 
@@ -68,7 +68,10 @@
                             style="@style/SectionTitle"
                             android:text="@string/user_info_title"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content" />
+                            android:fontFamily="@font/inter_regular"
+                            android:layout_height="wrap_content"
+                            android:paddingLeft="5dp"
+                            android:paddingTop="4dp"/>
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -167,19 +170,17 @@
                         </LinearLayout>
 
 
-                        <com.google.android.material.button.MaterialButton
+                        <Button
                             android:id="@+id/logoutButton"
-                            style="@style/PrimaryButton"
                             android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
                             android:layout_marginTop="8dp"
+                            android:layout_marginBottom="10dp"
+                            android:background="@drawable/rounded_button"
                             android:text="@string/logout" />
 
-                        <com.google.android.material.button.MaterialButton
-                            android:id="@+id/viewTodosButton"
-                            style="@style/PrimaryButton"
-                            android:layout_width="wrap_content"
-                            android:layout_marginTop="8dp"
-                            android:text="@string/view_todos" />
+
                     </LinearLayout>
                 </com.google.android.material.card.MaterialCardView>
 
@@ -195,15 +196,20 @@
                             style="@style/SectionTitle"
                             android:text="@string/payment_methods_title"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
+                            android:layout_height="wrap_content"
+                            android:paddingLeft="6dp"
+                            android:paddingTop="4dp"/>
 
 
-                        <com.google.android.material.button.MaterialButton
+                        <Button
                             android:id="@+id/addPaymentMethodButton"
-                            style="@style/PrimaryButton"
+                            android:background="@drawable/rounded_button"
                             android:layout_width="wrap_content"
                             android:layout_marginTop="8dp"
-                            android:text="@string/add_payment_method" />
+                            android:layout_gravity="center"
+                            android:layout_marginBottom="10dp"
+                            android:text="@string/add_payment_method"
+                             android:layout_height="wrap_content"/>
                     </LinearLayout>
                 </com.google.android.material.card.MaterialCardView>
             </LinearLayout>
