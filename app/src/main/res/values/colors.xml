@@ -13,4 +13,5 @@
     <color name="bottom_nav_inactive">@color/gray</color>
 
     <color name="bottom_nav_background">@color/white</color>
+    <color name="status_done">#4CAF50</color>
 </resources>

@@ -4,7 +4,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.fragment.app.Fragment
+import com.google.android.material.chip.Chip
 import androidx.navigation.fragment.findNavController
 import ru.example.canlisu.R
 import ru.example.canlisu.databinding.FragmentHelpBinding
@@ -28,6 +30,15 @@ class HelpFragment : Fragment() {
         }
 
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        val number = (10000..99999).random()
+        val card = view.findViewById<View>(R.id.exampleRequest)
+        card.findViewById<TextView>(R.id.tvRequestNumber).text = "№ $number"
+        card.findViewById<TextView>(R.id.tvRequestTitle).text = "Протечка трубы"
+        card.findViewById<Chip>(R.id.chipStatus).text = "Исполнен"
     }
 
     override fun onDestroyView() {
