@@ -27,12 +27,12 @@
             <!-- Logo -->
             <ImageView
                 android:id="@+id/logo"
-                android:layout_width="72dp"
-                android:layout_height="72dp"
+                android:layout_width="332dp"
+                android:layout_height="112dp"
                 android:layout_gravity="center_horizontal"
                 android:contentDescription="@string/login_logo_cd"
-                android:src="@drawable/ic_launcher_foreground"
-                android:padding="8dp" />
+                android:padding="8dp"
+                android:src="@drawable/splash_logo" />
 
             <!-- Title -->
             <TextView
@@ -120,6 +120,7 @@
                     android:id="@+id/forgotLink"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="4dp"
                     android:text="@string/login_forgot_password"
                     android:textStyle="bold"/>
             </LinearLayout>
