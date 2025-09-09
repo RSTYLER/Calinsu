@@ -48,9 +48,9 @@ class HomeFragment : Fragment() {
             //cardNumberMasked.text = getString(R.string.card_number_template, last4Digits)
         }
 
-       /* binding.logoutButton.setOnClickListener {
+       binding.logoutButton.setOnClickListener {
             findNavController().navigate(R.id.action_nav_home_to_loginFragment)
-        }*/
+        }
         binding.swipeRefreshLayout.setOnRefreshListener {
             // TODO: обновить данные здесь (например, запрос в ViewModel)
             Toast.makeText(requireContext(), "Refreshing...", Toast.LENGTH_SHORT).show()

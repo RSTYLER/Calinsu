@@ -3,6 +3,7 @@ import java.util.Properties
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.kotlin.serialization)
 }
 
 val localProperties = Properties().apply {
@@ -69,6 +70,13 @@ android {
         testImplementation(libs.junit)
         androidTestImplementation(libs.androidx.junit)
         androidTestImplementation(libs.androidx.espresso.core)
+        implementation(libs.supabase.kt.v240)
+        implementation(libs.gotrue.kt)
+        implementation(libs.postgrest.kt.v240)
+        implementation(libs.ktor.client.okhttp)
+        implementation(libs.kotlinx.serialization.json)
+
+
 
     }
 }

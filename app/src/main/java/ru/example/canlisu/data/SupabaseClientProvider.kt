@@ -10,8 +10,8 @@ import ru.example.canlisu.BuildConfig
 object SupabaseClientProvider {
 
     val client: SupabaseClient? by lazy {
-        val url = ""
-        val key = ""
+        val url = "https://rmvhlleibudqesemzita.supabase.co"
+        val key = "sb_publishable_l-7bAioifiKvlBbPu4Q3PQ_7XNkODv3"
         if (url.isBlank() || key.isBlank()) {
             Log.e("SupabaseClientProvider", "Supabase credentials are missing")
             null
