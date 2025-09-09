@@ -26,9 +26,21 @@ class MainActivity : AppCompatActivity() {
 
         binding.bottomNav.setupWithNavController(navController)
 
+        binding.bottomNav.setOnItemSelectedListener { item ->
+            if (navController.currentDestination?.id != item.itemId) {
+                navController.navigate(item.itemId)
+            }
+            true
+        }
+
+        val rootDestinations = setOf(R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow)
         navController.addOnDestinationChangedListener { _, destination, _ ->
             val hideBottom = destination.id == R.id.loginFragment || destination.id == R.id.registrationFragment
             binding.bottomNav.visibility = if (hideBottom) View.GONE else View.VISIBLE
+
+            if (destination.id in rootDestinations) {
+                binding.bottomNav.selectedItemId = destination.id
+            }
         }
     }
 
