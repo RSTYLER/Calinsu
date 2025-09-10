@@ -13,6 +13,7 @@ import ru.example.canlisu.R
 import ru.example.canlisu.data.AuthRepository
 import ru.example.canlisu.data.UserManager
 import ru.example.canlisu.databinding.FragmentLoginBinding
+import ru.example.canlisu.prefs.AuthPrefs
 
 class LoginFragment : Fragment() {
 
@@ -43,6 +44,11 @@ class LoginFragment : Fragment() {
                     binding.passwordLayout.error = null
                     binding.passwordInput.text?.clear()
                     UserManager.currentUser = state.data
+                    if (binding.rememberCheck.isChecked) {
+                        AuthPrefs.saveUser(requireContext(), state.data)
+                    } else {
+                        AuthPrefs.clear(requireContext())
+                    }
                     findNavController().navigate(R.id.action_loginFragment_to_nav_home)
                 }
                 is AuthState.Error -> {
