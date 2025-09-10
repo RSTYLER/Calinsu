@@ -7,7 +7,7 @@ import kotlinx.serialization.Serializable
 @SuppressLint("UnsafeOptInUsageError")
 @Serializable
 data class UserSubscription(
-    val id: String,
+    val id: Int,
     @SerialName("user_id")
     val userId: String,
     @SerialName("subscription_id")

@@ -14,6 +14,6 @@ data class Subscription(
     @SerialName("duration_days")
     val durationDays: Int,
     @SerialName("physicalUser")
-    val physicalUser: Int,
+    val physicalUser: Boolean,
     val discount: Int? = null
 )
