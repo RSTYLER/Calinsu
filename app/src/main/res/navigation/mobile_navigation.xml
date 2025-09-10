@@ -85,7 +85,17 @@
         android:id="@+id/changeSubscriptionFragment"
         android:name="ru.example.canlisu.ui.gallery.ChangeSubscriptionFragment"
         android:label="Change Subscription"
-        tools:layout="@layout/fragment_change_subscription" />
+        tools:layout="@layout/fragment_change_subscription">
+        <action
+            android:id="@+id/action_changeSubscriptionFragment_to_subscriptionDetailFragment"
+            app:destination="@id/subscriptionDetailFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/subscriptionDetailFragment"
+        android:name="ru.example.canlisu.ui.gallery.SubscriptionDetailFragment"
+        android:label="Subscription Detail"
+        tools:layout="@layout/fragment_subscription_detail" />
     <fragment
         android:id="@+id/requestFragment"
         android:name="ru.example.canlisu.ui.request.RequestFragment"

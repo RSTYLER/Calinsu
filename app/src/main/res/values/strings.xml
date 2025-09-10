@@ -92,4 +92,5 @@
     <string name="tab_home">Home</string>
     <string name="tab_business">Business</string>
     <string name="select_plan">Select Plan</string>
+    <string name="continue_button">Продолжить</string>
 </resources>

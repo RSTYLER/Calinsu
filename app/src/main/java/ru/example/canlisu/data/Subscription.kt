@@ -9,7 +9,11 @@ import kotlinx.serialization.Serializable
 data class Subscription(
     val id: Int,
     val name: String,
+    val description: String,
     val price: Double,
-    @SerialName("duration_months")
-    val durationMonths: Int
+    @SerialName("duration_days")
+    val durationDays: Int,
+    @SerialName("physicalUser")
+    val physicalUser: Int,
+    val discount: Int? = null
 )
