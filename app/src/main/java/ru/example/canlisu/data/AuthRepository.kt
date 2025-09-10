@@ -12,23 +12,30 @@ class AuthRepository(
     private val client: SupabaseClient? = SupabaseClientProvider.client,
 ) {
 
-    suspend fun register(user: User, passwordHash: String): Result<Unit> {
+    suspend fun register(user: User, passwordHash: String): Result<User> {
         val supabase = client ?: return Result.failure(IllegalStateException("Supabase client is not configured"))
         val data = mapOf(
             "firstName" to user.firstName,
             "lastName" to user.lastName,
             "email" to user.email,
             "phone" to user.phone,
+            "userAdress" to user.address,
             "password_hash" to passwordHash
         )
         return runCatching {
             supabase.postgrest["users"].insert(data)
-            Unit
+            supabase.postgrest["users"].select {
+                filter {
+                    eq("email", user.email!!)
+                }
+                limit(1)
+            }.decodeList<User>().first()
         }.recoverCatching { e ->
             val message = e.message.orEmpty()
             when {
                 message.contains("users_email_key") -> throw EmailAlreadyExistsException()
                 message.contains("users_phone_key") -> throw PhoneAlreadyExistsException()
+                message.contains("userAdress") -> throw AddressRequiredException()
                 else -> throw e
             }
         }

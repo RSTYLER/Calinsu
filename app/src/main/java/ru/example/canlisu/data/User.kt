@@ -14,6 +14,8 @@ data class User(
     val lastName: String? = null,
     val email: String? = null,
     val phone: String? = null,
+    @SerialName("userAdress")
+    val address: String? = null,
     @SerialName("password_hash")
     val passwordHash: String
 )

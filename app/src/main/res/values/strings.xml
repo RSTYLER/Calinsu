@@ -78,6 +78,7 @@
     <string name="error_user_not_found">User not found</string>
     <string name="error_email_exists" translatable="false">Аккаунт с этой почтой уже существует</string>
     <string name="error_phone_exists" translatable="false">Аккаунт с этим номером уже существует</string>
+    <string name="error_invalid_address" translatable="false">Адрес не может быть пустым</string>
     <string name="register_password_label" translatable="false">Password</string>
     <string name="error_network">Network error</string>
 

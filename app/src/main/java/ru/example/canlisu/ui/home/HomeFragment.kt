@@ -34,7 +34,7 @@ class HomeFragment : Fragment() {
             binding.lastNameView.text = user?.lastName.orEmpty()
             binding.emailView.text = user?.email.orEmpty()
             binding.phoneView.text = user?.phone.orEmpty()
-            binding.addressView.text = ""
+            binding.addressView.text = user?.address.orEmpty()
             //cardNumberMasked.text = getString(R.string.card_number_template, last4Digits)
         }
 
