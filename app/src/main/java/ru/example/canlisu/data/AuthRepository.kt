@@ -5,6 +5,9 @@ import io.github.jan.supabase.SupabaseClient
 import io.github.jan.supabase.auth.auth
 import io.github.jan.supabase.postgrest.postgrest
 
+import ru.example.canlisu.data.EmailAlreadyExistsException
+import ru.example.canlisu.data.PhoneAlreadyExistsException
+
 class AuthRepository(
     private val client: SupabaseClient? = SupabaseClientProvider.client,
 ) {
@@ -21,6 +24,13 @@ class AuthRepository(
         return runCatching {
             supabase.postgrest["users"].insert(data)
             Unit
+        }.recoverCatching { e ->
+            val message = e.message.orEmpty()
+            when {
+                message.contains("users_email_key") -> throw EmailAlreadyExistsException()
+                message.contains("users_phone_key") -> throw PhoneAlreadyExistsException()
+                else -> throw e
+            }
         }
     }
 

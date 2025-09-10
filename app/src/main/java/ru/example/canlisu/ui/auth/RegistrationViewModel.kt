@@ -7,6 +7,8 @@ import androidx.lifecycle.viewModelScope
 import at.favre.lib.crypto.bcrypt.BCrypt
 import kotlinx.coroutines.launch
 import ru.example.canlisu.data.AuthRepository
+import ru.example.canlisu.data.EmailAlreadyExistsException
+import ru.example.canlisu.data.PhoneAlreadyExistsException
 import ru.example.canlisu.data.User
 
 class RegistrationViewModel(private val repository: AuthRepository) : ViewModel() {
@@ -30,10 +32,11 @@ class RegistrationViewModel(private val repository: AuthRepository) : ViewModel(
                     _registrationState.value = AuthState.Success(Unit)
                 }
                 .onFailure { e ->
-                    _registrationState.value = if (e is IllegalStateException) {
-                        AuthState.Error("Supabase client is not configured. Please configure Supabase.")
-                    } else {
-                        AuthState.Error(e.message ?: "Network error")
+                    _registrationState.value = when (e) {
+                        is EmailAlreadyExistsException -> AuthState.Error("email_exists")
+                        is PhoneAlreadyExistsException -> AuthState.Error("phone_exists")
+                        is IllegalStateException -> AuthState.Error("Supabase client is not configured. Please configure Supabase.")
+                        else -> AuthState.Error(e.message ?: "Network error")
                     }
                 }
         }
