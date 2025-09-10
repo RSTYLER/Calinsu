@@ -9,10 +9,9 @@ class SubscriptionRepository(
     suspend fun getSubscriptions(isPhysicalUser: Boolean): Result<List<Subscription>> {
         val supabase = client ?: return Result.failure(IllegalStateException("Supabase client is not configured"))
         return runCatching {
-            val flag = if (isPhysicalUser) 1 else 0
             supabase.postgrest["subscriptions"].select {
                 filter {
-                    eq("physicalUser", flag)
+                    eq("physicalUser", isPhysicalUser)
                 }
             }.decodeList<Subscription>()
         }
