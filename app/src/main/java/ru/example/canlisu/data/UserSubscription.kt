@@ -7,14 +7,13 @@ import kotlinx.serialization.Serializable
 @SuppressLint("UnsafeOptInUsageError")
 @Serializable
 data class UserSubscription(
-    val id: Int,
+    val id: String,
     @SerialName("user_id")
-    val userId: Int,
+    val userId: String,
     @SerialName("subscription_id")
     val subscriptionId: Int,
     @SerialName("start_date")
     val startDate: String,
-    @SerialName("end_date")
-    val endDate: String? = null,
-    val active: Boolean = false
+    @SerialName("is_active")
+    val isActive: Boolean = false
 )

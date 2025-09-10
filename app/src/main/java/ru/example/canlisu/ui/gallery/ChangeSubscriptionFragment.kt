@@ -4,11 +4,17 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.tabs.TabLayout
+import kotlinx.coroutines.launch
+import ru.example.canlisu.R
+import ru.example.canlisu.data.Subscription
 import ru.example.canlisu.data.SubscriptionPlan
+import ru.example.canlisu.data.SubscriptionRepository
 import ru.example.canlisu.databinding.FragmentChangeSubscriptionBinding
 
 class ChangeSubscriptionFragment : Fragment() {
@@ -16,65 +22,43 @@ class ChangeSubscriptionFragment : Fragment() {
     private var _binding: FragmentChangeSubscriptionBinding? = null
     private val binding get() = _binding!!
 
-    private val homePlans = listOf(
-        SubscriptionPlan(
-            title = "1 месяц",
-            price = "1390 ₽",
-            advantages = listOf("Фильтр", "Доставка", "Установка", "Обслуживание")
-        ),
-        SubscriptionPlan(
-            title = "6 месяцев",
-            price = "7490 ₽",
-            oldPrice = "8340 ₽",
-            discountPercent = 10,
-            advantages = listOf("Фильтр", "Доставка", "Установка", "Обслуживание")
-        ),
-        SubscriptionPlan(
-            title = "1 год",
-            price = "14190 ₽",
-            oldPrice = "16680 ₽",
-            discountPercent = 15,
-            advantages = listOf("Фильтр", "Доставка", "Установка", "Обслуживание")
-        )
-    )
+    private val repository = SubscriptionRepository()
 
-    private val businessPlans = listOf(
-        SubscriptionPlan(
-            title = "1 месяц",
-            price = "2390 ₽",
-            advantages = listOf("Фильтр", "Доставка", "Установка", "Обслуживание")
-        ),
-        SubscriptionPlan(
-            title = "6 месяцев",
-            price = "12890 ₽",
-            oldPrice = "14340 ₽",
-            discountPercent = 10,
-            advantages = listOf("Фильтр", "Доставка", "Установка", "Обслуживание")
-        ),
-        SubscriptionPlan(
-            title = "1 год",
-            price = "24190 ₽",
-            oldPrice = "28380 ₽",
-            discountPercent = 15,
-            advantages = listOf("Фильтр", "Доставка", "Установка", "Обслуживание")
-        )
-    )
+    private var homePlans: List<SubscriptionPlan> = emptyList()
+    private var businessPlans: List<SubscriptionPlan> = emptyList()
 
     private lateinit var adapter: SubscriptionAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
-        savedInstanceState: Bundle?
+        savedInstanceState: Bundle?,
     ): View {
         _binding = FragmentChangeSubscriptionBinding.inflate(inflater, container, false)
 
         adapter = SubscriptionAdapter(emptyList()) { plan ->
-            Toast.makeText(requireContext(), "Выбран тариф: ${plan.title}", Toast.LENGTH_SHORT).show()
+            findNavController().navigate(
+                R.id.action_changeSubscriptionFragment_to_subscriptionDetailFragment,
+                bundleOf("subscriptionId" to plan.id)
+            )
         }
         binding.subscriptionRecyclerView.layoutManager = LinearLayoutManager(requireContext())
         binding.subscriptionRecyclerView.adapter = adapter
-        adapter.submitList(homePlans)
+
+        viewLifecycleOwner.lifecycleScope.launch {
+            repository.getSubscriptions(true).onSuccess { list ->
+                homePlans = list.map { it.toPlan() }
+                if (binding.tabLayout.selectedTabPosition == 0) {
+                    adapter.submitList(homePlans)
+                }
+            }
+        }
+
+        viewLifecycleOwner.lifecycleScope.launch {
+            repository.getSubscriptions(false).onSuccess { list ->
+                businessPlans = list.map { it.toPlan() }
+            }
+        }
 
         binding.tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
             override fun onTabSelected(tab: TabLayout.Tab?) {
@@ -89,6 +73,18 @@ class ChangeSubscriptionFragment : Fragment() {
         })
 
         return binding.root
+    }
+
+    private fun Subscription.toPlan(): SubscriptionPlan {
+        val old = discount?.let { (price / (1 - it / 100.0)).toInt().toString() + " ₽" }
+        return SubscriptionPlan(
+            id = id,
+            title = name,
+            price = "${price.toInt()} ₽",
+            oldPrice = old,
+            discountPercent = discount,
+            advantages = listOf("Фильтр", "Доставка", "Установка", "Обслуживание")
+        )
     }
 
     override fun onDestroyView() {
