@@ -9,14 +9,15 @@ import kotlinx.coroutines.launch
 import ru.example.canlisu.data.AuthRepository
 import ru.example.canlisu.data.EmailAlreadyExistsException
 import ru.example.canlisu.data.PhoneAlreadyExistsException
+import ru.example.canlisu.data.AddressRequiredException
 import ru.example.canlisu.data.User
 
 class RegistrationViewModel(private val repository: AuthRepository) : ViewModel() {
 
-    private val _registrationState = MutableLiveData<AuthState<Unit>>()
-    val registrationState: LiveData<AuthState<Unit>> = _registrationState
+    private val _registrationState = MutableLiveData<AuthState<User>>()
+    val registrationState: LiveData<AuthState<User>> = _registrationState
 
-    fun register(firstName: String, lastName: String, email: String, phone: String, password: String) {
+    fun register(firstName: String, lastName: String, email: String, phone: String, address: String, password: String) {
         viewModelScope.launch {
             _registrationState.value = AuthState.Loading
             val hashedPassword = hashPassword(password)
@@ -25,17 +26,19 @@ class RegistrationViewModel(private val repository: AuthRepository) : ViewModel(
                 lastName = lastName,
                 email = email,
                 phone = phone,
+                address = address,
                 passwordHash = hashedPassword
             )
             repository.register(user, hashedPassword)
-                .onSuccess {
-                    _registrationState.value = AuthState.Success(Unit)
+                .onSuccess { created ->
+                    _registrationState.value = AuthState.Success(created)
                 }
                 .onFailure { e ->
                     _registrationState.value = when (e) {
                         is EmailAlreadyExistsException -> AuthState.Error("email_exists")
                         is PhoneAlreadyExistsException -> AuthState.Error("phone_exists")
-                        is IllegalStateException -> AuthState.Error("Supabase client is not configured. Please configure Supabase.")
+                        is AddressRequiredException -> AuthState.Error("address_required")
+                        is IllegalStateException -> AuthState.Error("Supabase client is not configured. Please configure Supabase client.")
                         else -> AuthState.Error(e.message ?: "Network error")
                     }
                 }

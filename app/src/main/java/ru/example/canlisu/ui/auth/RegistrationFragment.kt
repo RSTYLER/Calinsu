@@ -11,6 +11,7 @@ import androidx.navigation.fragment.findNavController
 import com.google.android.material.snackbar.Snackbar
 import ru.example.canlisu.R
 import ru.example.canlisu.data.AuthRepository
+import ru.example.canlisu.data.UserManager
 import ru.example.canlisu.databinding.FragmentRegistrationBinding
 
 class RegistrationFragment : Fragment() {
@@ -40,7 +41,9 @@ class RegistrationFragment : Fragment() {
                     binding.signUpButton.isEnabled = true
                     binding.emailLayout.error = null
                     binding.phoneLayout.error = null
+                    binding.addressLayout.error = null
                     binding.passwordInput.text?.clear()
+                    UserManager.currentUser = state.data
                     findNavController().navigate(R.id.action_registrationFragment_to_nav_home)
                 }
                 is AuthState.Error -> {
@@ -54,10 +57,17 @@ class RegistrationFragment : Fragment() {
                         "phone_exists" -> {
                             binding.phoneLayout.error = getString(R.string.error_phone_exists)
                             binding.emailLayout.error = null
+                            binding.addressLayout.error = null
+                        }
+                        "address_required" -> {
+                            binding.addressLayout.error = getString(R.string.error_invalid_address)
+                            binding.emailLayout.error = null
+                            binding.phoneLayout.error = null
                         }
                         else -> {
                             binding.emailLayout.error = null
                             binding.phoneLayout.error = null
+                            binding.addressLayout.error = null
                             Snackbar.make(
                                 binding.root,
                                 state.message.ifEmpty { getString(R.string.error_network) },
@@ -74,6 +84,7 @@ class RegistrationFragment : Fragment() {
             val lastName = binding.lastNameInput.text?.toString()?.trim() ?: ""
             val email = binding.emailInput.text?.toString()?.trim() ?: ""
             val phone = binding.phoneInput.text?.toString()?.trim() ?: ""
+            val address = binding.addressInput.text?.toString()?.trim() ?: ""
             val password = binding.passwordInput.text?.toString() ?: ""
 
             val nameRegex = Regex("^[А-Яа-яЁё]+$")
@@ -107,6 +118,13 @@ class RegistrationFragment : Fragment() {
                 binding.phoneLayout.error = null
             }
 
+            if (address.isEmpty()) {
+                binding.addressLayout.error = getString(R.string.error_invalid_address)
+                isValid = false
+            } else {
+                binding.addressLayout.error = null
+            }
+
             if (password.isEmpty()) {
                 binding.passwordLayout.error = getString(R.string.error_invalid_password)
                 isValid = false
@@ -115,7 +133,7 @@ class RegistrationFragment : Fragment() {
             }
 
             if (isValid) {
-                viewModel.register(firstName, lastName, email, phone, password)
+                viewModel.register(firstName, lastName, email, phone, address, password)
             }
         }
 

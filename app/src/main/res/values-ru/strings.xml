@@ -59,4 +59,5 @@
     <string name="login_forgot_password">Забыли пароль?</string>
     <string name="login_sign_in">Войти</string>
     <string name="login_or">или</string>
+    <string name="error_invalid_address">Адрес не может быть пустым</string>
 </resources>
