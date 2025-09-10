@@ -6,39 +6,40 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import ru.example.canlisu.data.SubscriptionPlan
+import ru.example.canlisu.data.DbSubscription
 import ru.example.canlisu.databinding.ItemSubscriptionBinding
 
 class SubscriptionAdapter(
-    private var items: List<SubscriptionPlan>,
-    private val onSelect: (SubscriptionPlan) -> Unit
+    private var items: List<DbSubscription>,
+    private val onSelect: (DbSubscription) -> Unit,
 ) : RecyclerView.Adapter<SubscriptionAdapter.SubscriptionViewHolder>() {
 
     inner class SubscriptionViewHolder(private val binding: ItemSubscriptionBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(plan: SubscriptionPlan) {
-            binding.planTitle.text = plan.title
-            binding.planPrice.text = plan.price
+        fun bind(plan: DbSubscription) {
+            binding.planTitle.text = plan.name
+            binding.planPrice.text = "${plan.price.toInt()} ₽"
 
-            if (plan.oldPrice != null) {
+            val discount = plan.discount ?: 0
+            if (discount > 0) {
+                val old = (plan.price / (1 - discount / 100.0)).toInt()
                 binding.oldPrice.visibility = View.VISIBLE
-                binding.oldPrice.text = plan.oldPrice
-                binding.oldPrice.paintFlags = binding.oldPrice.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
+                binding.oldPrice.text = "$old ₽"
+                binding.oldPrice.paintFlags =
+                    binding.oldPrice.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
+                binding.discount.visibility = View.VISIBLE
+                binding.discount.text = "${discount}%"
             } else {
                 binding.oldPrice.visibility = View.GONE
-            }
-
-            if (plan.discountPercent != null) {
-                binding.discount.visibility = View.VISIBLE
-                binding.discount.text = "${plan.discountPercent}%"
-            } else {
                 binding.discount.visibility = View.GONE
             }
 
             binding.advantagesContainer.removeAllViews()
-            plan.advantages.forEach { advantage ->
-                val tv = TextView(binding.root.context).apply {
-                    text = advantage
+            val context = binding.root.context
+            val durationText = formatDuration(plan.duration_days)
+            listOf(durationText, "Фильтр", "Доставка", "Установка", "Обслуживание").forEach { adv ->
+                val tv = TextView(context).apply {
+                    text = adv
                     textAlignment = View.TEXT_ALIGNMENT_CENTER
                 }
                 binding.advantagesContainer.addView(tv)
@@ -47,6 +48,13 @@ class SubscriptionAdapter(
             binding.selectButton.setOnClickListener {
                 onSelect(plan)
             }
+        }
+
+        private fun formatDuration(days: Int): String = when (days) {
+            365 -> "1 год"
+            180 -> "6 мес"
+            30 -> "1 мес"
+            else -> "$days дн"
         }
     }
 
@@ -63,8 +71,9 @@ class SubscriptionAdapter(
 
     override fun getItemCount(): Int = items.size
 
-    fun submitList(plans: List<SubscriptionPlan>) {
+    fun submitList(plans: List<DbSubscription>) {
         items = plans
         notifyDataSetChanged()
     }
 }
+
