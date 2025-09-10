@@ -10,7 +10,8 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import ru.example.canlisu.databinding.FragmentHomeBinding
 import ru.example.canlisu.R
-
+import ru.example.canlisu.data.UserManager
+import ru.example.canlisu.prefs.AuthPrefs
 
 class HomeFragment : Fragment() {
 
@@ -38,6 +39,8 @@ class HomeFragment : Fragment() {
         }
 
        binding.logoutButton.setOnClickListener {
+            AuthPrefs.clear(requireContext())
+            UserManager.currentUser = null
             findNavController().navigate(R.id.action_nav_home_to_loginFragment)
         }
         binding.swipeRefreshLayout.setOnRefreshListener {
