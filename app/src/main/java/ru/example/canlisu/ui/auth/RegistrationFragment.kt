@@ -38,17 +38,33 @@ class RegistrationFragment : Fragment() {
                 is AuthState.Success -> {
                     binding.progressBar.visibility = View.GONE
                     binding.signUpButton.isEnabled = true
+                    binding.emailLayout.error = null
+                    binding.phoneLayout.error = null
                     binding.passwordInput.text?.clear()
                     findNavController().navigate(R.id.action_registrationFragment_to_nav_home)
                 }
                 is AuthState.Error -> {
                     binding.progressBar.visibility = View.GONE
                     binding.signUpButton.isEnabled = true
-                    Snackbar.make(
-                        binding.root,
-                        state.message.ifEmpty { getString(R.string.error_network) },
-                        Snackbar.LENGTH_LONG
-                    ).show()
+                    when (state.message) {
+                        "email_exists" -> {
+                            binding.emailLayout.error = getString(R.string.error_email_exists)
+                            binding.phoneLayout.error = null
+                        }
+                        "phone_exists" -> {
+                            binding.phoneLayout.error = getString(R.string.error_phone_exists)
+                            binding.emailLayout.error = null
+                        }
+                        else -> {
+                            binding.emailLayout.error = null
+                            binding.phoneLayout.error = null
+                            Snackbar.make(
+                                binding.root,
+                                state.message.ifEmpty { getString(R.string.error_network) },
+                                Snackbar.LENGTH_LONG
+                            ).show()
+                        }
+                    }
                 }
             }
         }

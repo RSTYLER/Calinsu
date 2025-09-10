@@ -76,6 +76,8 @@
     <string name="error_invalid_email_or_phone" translatable="false">Некорректный email или номер телефона</string>
     <string name="error_invalid_password" translatable="false">Invalid password</string>
     <string name="error_user_not_found" translatable="false">User not found</string>
+    <string name="error_email_exists" translatable="false">Аккаунт с этой почтой уже существует</string>
+    <string name="error_phone_exists" translatable="false">Аккаунт с этим номером уже существует</string>
     <string name="register_password_label" translatable="false">Password</string>
     <string name="error_network" translatable="false">Network error</string>
 
