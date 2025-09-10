@@ -1,12 +1,12 @@
 package ru.example.canlisu.ui.home
 
-import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import ru.example.canlisu.databinding.FragmentHomeBinding
 import ru.example.canlisu.R
@@ -16,19 +16,10 @@ class HomeFragment : Fragment() {
 
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
-
-    // Примерные данные — потом можно подгружать из ViewModel или базы
-    private val firstName = "Ivan"
-    private val lastName = "Ivanov"
-
-    private val email = "Ivan@example.com"
-    private val phone = "+7 999 123-45-67"
-    private val address = "123 Example Street, NY"
+    private val viewModel: HomeViewModel by viewModels()
 
     val last4Digits = "1234" // заменить на реальные данные
 
-
-    @SuppressLint("SetTextI18n")
     override fun onCreateView(
 
         inflater: LayoutInflater,
@@ -37,14 +28,12 @@ class HomeFragment : Fragment() {
     ): View {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
 
-        // Устанавливаем текст в нужные TextView
-        binding.apply {
-            // Устанавливаем значения в TextView без шаблонов
-            firstNameView.text = firstName
-            lastNameView.text = lastName
-            emailView.text = email
-            phoneView.text = phone
-            addressView.text = address
+        viewModel.user.observe(viewLifecycleOwner) { user ->
+            binding.firstNameView.text = user?.firstName.orEmpty()
+            binding.lastNameView.text = user?.lastName.orEmpty()
+            binding.emailView.text = user?.email.orEmpty()
+            binding.phoneView.text = user?.phone.orEmpty()
+            binding.addressView.text = ""
             //cardNumberMasked.text = getString(R.string.card_number_template, last4Digits)
         }
 
