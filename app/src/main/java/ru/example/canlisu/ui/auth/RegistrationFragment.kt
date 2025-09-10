@@ -99,7 +99,7 @@ class RegistrationFragment : Fragment() {
             }
 
             if (isValid) {
-                viewModel.register(email, phone, password)
+                viewModel.register(firstName, lastName, email, phone, password)
             }
         }
 
