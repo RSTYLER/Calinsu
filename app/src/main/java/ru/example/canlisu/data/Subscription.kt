@@ -1,8 +1,10 @@
 package ru.example.canlisu.data
 
+import android.annotation.SuppressLint
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
+@SuppressLint("UnsafeOptInUsageError")
 @Serializable
 data class Subscription(
     val id: Int,

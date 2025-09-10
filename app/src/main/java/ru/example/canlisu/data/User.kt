@@ -7,7 +7,7 @@ import kotlinx.serialization.Serializable
 @SuppressLint("UnsafeOptInUsageError")
 @Serializable
 data class User(
-    val id: Int? = null,
+    val id: String? = null,
     @SerialName("firstName")
     val firstName: String? = null,
     @SerialName("lastName")

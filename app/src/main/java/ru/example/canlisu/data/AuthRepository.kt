@@ -19,7 +19,7 @@ class AuthRepository(
             "lastName" to user.lastName,
             "email" to user.email,
             "phone" to user.phone,
-            "password_hash" to passwordHash,
+            "password_hash" to passwordHash
         )
         return runCatching {
             supabase.postgrest["users"].insert(data)

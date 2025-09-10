@@ -51,38 +51,38 @@
     <string name="submit_request">Submit Request</string>
 
     <string name="login_logo_cd" translatable="false">App logo</string>
-    <string name="login_title" translatable="false">Welcome back</string>
-    <string name="login_subtitle" translatable="false">Sign in to continue</string>
-    <string name="login_email_label" translatable="false">Email or phone</string>
-    <string name="login_password_label" translatable="false">Password</string>
-    <string name="login_remember_me" translatable="false">Remember me</string>
-    <string name="login_forgot_password" translatable="false">Forgot password?</string>
-    <string name="login_sign_in" translatable="false">Sign In</string>
-    <string name="login_or" translatable="false">or</string>
-    <string name="login_create_account" translatable="false">Create Account</string>
+    <string name="login_title">Welcome back</string>
+    <string name="login_subtitle">Sign in to continue</string>
+    <string name="login_email_label">Email or phone</string>
+    <string name="login_password_label">Password</string>
+    <string name="login_remember_me">Remember me</string>
+    <string name="login_forgot_password">Forgot password?</string>
+    <string name="login_sign_in">Sign In</string>
+    <string name="login_or">or</string>
+    <string name="login_create_account">Create Account</string>
 
-    <string name="register_title" translatable="false">Create Account</string>
-    <string name="register_first_name_label" translatable="false">First Name</string>
-    <string name="register_last_name_label" translatable="false">Last Name</string>
-    <string name="register_email_label" translatable="false">Email</string>
-    <string name="register_phone_label" translatable="false">Phone</string>
-    <string name="register_address_label" translatable="false">Address</string>
-    <string name="register_card_label" translatable="false">Card Number</string>
-    <string name="register_sign_up" translatable="false">Sign Up</string>
+    <string name="register_title">Create Account</string>
+    <string name="register_first_name_label">First Name</string>
+    <string name="register_last_name_label">Last Name</string>
+    <string name="register_email_label">Email</string>
+    <string name="register_phone_label">Phone</string>
+    <string name="register_address_label">Address</string>
+    <string name="register_card_label">Card Number</string>
+    <string name="register_sign_up">Sign Up</string>
 
     <string name="error_invalid_name" translatable="false">Допустимы только буквы кириллицы</string>
     <string name="error_invalid_email" translatable="false">Некорректный email</string>
     <string name="error_invalid_phone" translatable="false">Некорректный номер телефона</string>
     <string name="error_invalid_email_or_phone" translatable="false">Некорректный email или номер телефона</string>
-    <string name="error_invalid_password" translatable="false">Invalid password</string>
-    <string name="error_user_not_found" translatable="false">User not found</string>
+    <string name="error_invalid_password">Invalid password</string>
+    <string name="error_user_not_found">User not found</string>
     <string name="error_email_exists" translatable="false">Аккаунт с этой почтой уже существует</string>
     <string name="error_phone_exists" translatable="false">Аккаунт с этим номером уже существует</string>
     <string name="register_password_label" translatable="false">Password</string>
-    <string name="error_network" translatable="false">Network error</string>
+    <string name="error_network">Network error</string>
 
     <string name="password_recovery_email_label" translatable="false">Email</string>
-    <string name="password_recovery_send" translatable="false">Send</string>
+    <string name="password_recovery_send">Send</string>
     <string name="password_recovery_success" translatable="false">If an account exists with that email, we’ve sent reset instructions.</string>
 
     <string name="menu_subscription">Обслуживание</string>
