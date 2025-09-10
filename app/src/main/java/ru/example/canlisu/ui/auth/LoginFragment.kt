@@ -11,6 +11,7 @@ import androidx.navigation.fragment.findNavController
 import com.google.android.material.snackbar.Snackbar
 import ru.example.canlisu.R
 import ru.example.canlisu.data.AuthRepository
+import ru.example.canlisu.data.UserManager
 import ru.example.canlisu.databinding.FragmentLoginBinding
 
 class LoginFragment : Fragment() {
@@ -41,6 +42,7 @@ class LoginFragment : Fragment() {
                     binding.emailLayout.error = null
                     binding.passwordLayout.error = null
                     binding.passwordInput.text?.clear()
+                    UserManager.currentUser = state.data
                     findNavController().navigate(R.id.action_loginFragment_to_nav_home)
                 }
                 is AuthState.Error -> {
