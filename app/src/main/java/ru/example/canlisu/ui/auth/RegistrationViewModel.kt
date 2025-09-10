@@ -14,11 +14,17 @@ class RegistrationViewModel(private val repository: AuthRepository) : ViewModel(
     private val _registrationState = MutableLiveData<AuthState<Unit>>()
     val registrationState: LiveData<AuthState<Unit>> = _registrationState
 
-    fun register(email: String, phone: String, password: String) {
+    fun register(firstName: String, lastName: String, email: String, phone: String, password: String) {
         viewModelScope.launch {
             _registrationState.value = AuthState.Loading
             val hashedPassword = hashPassword(password)
-            val user = User(email = email, phone = phone, passwordHash = hashedPassword)
+            val user = User(
+                firstName = firstName,
+                lastName = lastName,
+                email = email,
+                phone = phone,
+                passwordHash = hashedPassword
+            )
             repository.register(user, hashedPassword)
                 .onSuccess {
                     _registrationState.value = AuthState.Success(Unit)

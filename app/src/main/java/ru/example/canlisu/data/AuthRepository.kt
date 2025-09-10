@@ -12,6 +12,8 @@ class AuthRepository(
     suspend fun register(user: User, passwordHash: String): Result<Unit> {
         val supabase = client ?: return Result.failure(IllegalStateException("Supabase client is not configured"))
         val data = mapOf(
+            "firstName" to user.firstName,
+            "lastName" to user.lastName,
             "email" to user.email,
             "phone" to user.phone,
             "password_hash" to passwordHash,
