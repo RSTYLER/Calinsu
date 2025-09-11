@@ -13,7 +13,6 @@ val localProperties = Properties().apply {
     }
 }
 
-
 android {
     namespace = "ru.example.canlisu"
     compileSdk = 34
@@ -26,7 +25,6 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-
     }
 
     buildTypes {
@@ -48,35 +46,28 @@ android {
     buildFeatures {
         viewBinding = true
         buildConfig = true
-
     }
+}
 
-    dependencies {
-        implementation(libs.androidx.viewpager2)
-        implementation(libs.androidx.swiperefreshlayout)
-        implementation(libs.androidx.core.ktx)
-        implementation(libs.androidx.appcompat)
-        implementation(libs.material)
-        implementation(libs.androidx.constraintlayout)
-        implementation(libs.androidx.lifecycle.livedata.ktx)
-        implementation(libs.androidx.lifecycle.viewmodel.ktx)
-        implementation(libs.androidx.lifecycle.runtime.ktx)
-        implementation(libs.androidx.navigation.fragment.ktx)
-        implementation(libs.androidx.navigation.ui.ktx)
-        implementation(libs.supabase.kt)
-        implementation(libs.supabase.auth)
-        implementation(libs.supabase.postgrest)
-        implementation(libs.bcrypt)
-        testImplementation(libs.junit)
-        androidTestImplementation(libs.androidx.junit)
-        androidTestImplementation(libs.androidx.espresso.core)
-        implementation(libs.supabase.kt.v240)
-        implementation(libs.gotrue.kt)
-        implementation(libs.postgrest.kt.v240)
-        implementation(libs.ktor.client.okhttp)
-        implementation(libs.kotlinx.serialization.json)
-
-
-
-    }
+dependencies {
+    implementation(libs.androidx.viewpager2)
+    implementation(libs.androidx.swiperefreshlayout)
+    implementation(libs.androidx.core.ktx)
+    implementation(libs.androidx.appcompat)
+    implementation(libs.material)
+    implementation(libs.androidx.constraintlayout)
+    implementation(libs.androidx.lifecycle.livedata.ktx)
+    implementation(libs.androidx.lifecycle.viewmodel.ktx)
+    implementation(libs.androidx.lifecycle.runtime.ktx)
+    implementation(libs.androidx.navigation.fragment.ktx)
+    implementation(libs.androidx.navigation.ui.ktx)
+    implementation(libs.supabase.kt)
+    implementation(libs.supabase.auth)
+    implementation(libs.supabase.postgrest)
+    implementation(libs.bcrypt)
+    testImplementation(libs.junit)
+    androidTestImplementation(libs.androidx.junit)
+    androidTestImplementation(libs.androidx.espresso.core)
+    implementation(libs.ktor.client.okhttp)
+    implementation(libs.kotlinx.serialization.json)
 }
