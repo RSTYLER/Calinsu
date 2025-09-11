@@ -38,15 +38,21 @@ class SubscriptionViewModel(
                 _activeSubscription.value = null
                 return@launch
             }
-            runCatching { repository.getActiveUserSubscription(uid) }
-                .onSuccess {
-                    _activeSubscription.value = it
-                    Log.d("SubscriptionViewModel", "Active subscription present=${it != null}")
-                }
-                .onFailure {
-                    _activeSubscription.value = null
-                    Log.e("SubscriptionViewModel", "Failed to load active subscription", it)
-                }
+            try {
+                val subscription = repository.getActiveUserSubscription(userId = uid)
+                _activeSubscription.value = subscription
+                Log.d(
+                    "SubscriptionViewModel",
+                    "Active subscription present=${subscription != null}"
+                )
+            } catch (e: Exception) {
+                _activeSubscription.value = null
+                Log.e(
+                    "SubscriptionViewModel",
+                    "Failed to load active subscription",
+                    e
+                )
+            }
         }
     }
 
