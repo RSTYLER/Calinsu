@@ -6,6 +6,7 @@ import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
+import io.github.jan.supabase.auth.auth
 import ru.example.canlisu.data.DbSubscription
 import ru.example.canlisu.data.DbUserSubscriptionWithSub
 import ru.example.canlisu.data.SupabaseClientProvider
@@ -32,7 +33,7 @@ class SubscriptionViewModel(
 
     fun loadActiveSubscription() {
         viewModelScope.launch {
-            val uid = client?.gotrue?.currentUserOrNull()?.id
+            val uid = client?.auth?.currentUserOrNull()?.id
             Log.d("SubscriptionViewModel", "Current uid=$uid")
             if (uid == null) {
                 _activeSubscription.value = null
