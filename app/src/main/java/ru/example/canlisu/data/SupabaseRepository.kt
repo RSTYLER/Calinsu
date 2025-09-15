@@ -11,10 +11,16 @@ class SupabaseRepository(
     suspend fun getSubscriptions(physicalUser: Boolean): List<DbSubscription> =
         client?.postgrest?.let { postgrest ->
             Log.d("SupabaseRepository", "Loading subscriptions for physicalUser=$physicalUser")
+
             postgrest["subscriptions"]
-                .select {
-                    filter { eq("physicalUser", physicalUser) }
-                    order("duration_days")
+                .select(
+                    columns = "id,name,description,price,duration_days,discount,physicalUser,user_subscriptions!inner(is_active)"
+                ) {
+                    filter {
+                        eq("physicalUser", physicalUser)
+                        eq("user_subscriptions.is_active", true)
+                    }
+                    order(column = "duration_days", ascending = true)
                 }
                 .decodeList<DbSubscription>()
         } ?: emptyList()
