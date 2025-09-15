@@ -8,7 +8,7 @@
         android:title="@string/menu_profile" />
 
     <item
-        android:id="@+id/nav_gallery"
+        android:id="@+id/nav_subscription"
         android:icon="@drawable/ic_service"
 
         android:title="@string/menu_subscription" />

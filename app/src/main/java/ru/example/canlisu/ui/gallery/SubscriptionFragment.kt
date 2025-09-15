@@ -42,7 +42,7 @@ class SubscriptionFragment : Fragment() {
         adapter = SubscriptionAdapter(emptyList()) { sub ->
             Log.d("SubscriptionFragment", "Open details for id=${sub.id}")
             findNavController().navigate(
-                R.id.action_nav_gallery_to_subscriptionDetailFragment,
+                R.id.action_nav_subscription_to_subscriptionDetailFragment,
                 bundleOf("subscriptionId" to sub.id)
             )
         }
